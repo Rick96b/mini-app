@@ -1,0 +1,1 @@
+export {default as Raiting} from './ui/Raiting'
