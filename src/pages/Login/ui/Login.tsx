@@ -1,12 +1,9 @@
-import { Button, DatePickerDateFormat, FormItem, Input, Panel, PanelHeader } from '@vkontakte/vkui'
+import { DatePickerDateFormat, Panel } from '@vkontakte/vkui'
 import React, { useContext, useState } from 'react'
-import { BaseButton } from 'shared/components'
 
 import styles from './Login.module.scss'
-import classNames from 'classnames'
 import { LoginForm } from 'widgets/login-form'
 import { UserContext, UserInfo, addUserToDb, checkUserCode } from 'entities/user'
-import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 import DefaultLogin from './DefaultLogin'
 
 interface LoginProps {

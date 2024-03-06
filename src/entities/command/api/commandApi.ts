@@ -16,3 +16,13 @@ export const getAllCommands = async () => {
     });
     return result
 }
+
+export const updateRaiting = async (command: Command, raiting: number, message: string) => {
+    updateDoc(doc(db, 'commands', command.name), {
+        raiting: command.raiting + raiting,
+        raiting_history: arrayUnion({
+            raiting: raiting,
+            message: message
+        })
+    })
+}
