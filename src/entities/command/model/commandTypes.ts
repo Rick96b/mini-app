@@ -6,4 +6,5 @@ export type Command = {
         raiting: number,
         message: string
     }[]
+    buildings: string[]
 }

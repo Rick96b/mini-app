@@ -3,7 +3,6 @@ import { UserContext, UserInfo, getUserById } from "entities/user";
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { Loader } from 'shared/components'
-import { db } from "shared/firebase";
 
 export const WithUser = ({children}: {children: React.ReactChild}) => {
     const [user, setUser] = useState<UserInfo | null>(null)
