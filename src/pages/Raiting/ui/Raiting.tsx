@@ -16,8 +16,12 @@ const Raiting:React.FC<RaitingProps> = props => {
   const [activeCommand, setActiveCommand] = useState('')
   const [commands, setCommands] = useState<Command[]>([])
 
-  useEffect(() => {
+  const fetchRaiting = () => {
     getAllCommands().then(response => setCommands(response))
+  }
+
+  useEffect(() => {
+    fetchRaiting()
   }, [])
 
   return (
@@ -28,6 +32,7 @@ const Raiting:React.FC<RaitingProps> = props => {
             command={command} 
             activeCommand={activeCommand} 
             setActiveCommand={setActiveCommand} 
+            refetch={fetchRaiting}
           />
         )}
       </div>
