@@ -3,7 +3,7 @@ import { Command, getAllCommands } from 'entities/command';
 import React, { useEffect, useState } from 'react'
 
 import styles from './Raiting.module.scss'
-import { Collapse } from '@mui/material';
+import RaitingRow from './RaitingRow/RaitingRow';
 
 interface RaitingProps {
   nav: string;
@@ -21,26 +21,16 @@ const Raiting:React.FC<RaitingProps> = props => {
   }, [])
 
   return (
-    <Panel nav={nav} className={styles.raitingPanel}>
-
-      {commands.map(command => 
-        <div className={styles.commandsContainer}>
-          <div className={styles.command} key={command.name} onClick={() => setActiveCommand(command.name)}>
-            <p>{command.name}</p>
-            <p className={styles.raiting}>{command.raiting}</p>
-          </div>
-          <Collapse in={command.name === activeCommand}>
-            {
-              command.raiting_history.map(raitingRow => 
-                <div>
-                  <p>{raitingRow.message}</p>
-                  <p>{raitingRow.raiting}</p>
-                </div>
-              )
-            }
-          </Collapse>
-        </div>
-      )}
+    <Panel nav={nav}>
+      <div className={styles.commandsContainer}>
+        {commands.map(command => 
+          <RaitingRow 
+            command={command} 
+            activeCommand={activeCommand} 
+            setActiveCommand={setActiveCommand} 
+          />
+        )}
+      </div>
     </Panel>
   )
 }

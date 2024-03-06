@@ -8,11 +8,13 @@ import { WithRouter } from './providers/with-router';
 const App = () => {
 	
     return (
-		<WithUser>
-			<WithRouter>
-            	<Routing />
-			</WithRouter>
-		</WithUser>
+		<>
+			<WithUser>
+				<WithRouter>
+					<Routing />
+				</WithRouter>
+			</WithUser>
+		</>
     )
 }
 

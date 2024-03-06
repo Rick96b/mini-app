@@ -6,7 +6,7 @@ export const checkUserCode = (code: string) => {
     type userAffiliation = {role: 'User' | 'Manager', group: string}
 
     const managerRole = code in managerCodes ? {role: 'Manager', group: ''} : undefined
-    const userRole = code in userCodes ? {role: 'User', group: userCodes[code as keyof typeof userCodes]} : undefined
+    const userRole = code in userCodes ? {role: 'User', group: code} : undefined
 
     return managerRole ? managerRole as userAffiliation : userRole as userAffiliation
 }
