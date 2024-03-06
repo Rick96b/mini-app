@@ -13,3 +13,14 @@ export const addToCommand = async ( building: Building, commandName: string ) =>
         }
     )
 }
+
+export const getAllBuildings = async () => 
+{
+    let result: Building[] = []
+    const buildingsCollection = (await getDocs(collection(db, 'buildings')))
+    buildingsCollection.forEach(building => 
+    {
+        result.push(building.data() as Building)
+    });
+    return result
+}
