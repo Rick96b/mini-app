@@ -8,7 +8,7 @@ export const addUserToCommand = async (userId:string, commandId: string) => {
     })
 }
 
-export const getAllCommands = async (command: Command) => {
+export const getAllCommands = async () => {
     let result: Command[] = []
     const commandsCollection = (await getDocs(collection(db, 'commands')))
     commandsCollection.forEach(command => {

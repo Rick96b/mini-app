@@ -16,6 +16,11 @@ export const WithRouter = ({children}:{children: React.ReactChild}) => {
       panel: 'documents_panel',
       view: 'default_view',
     },
+    {
+      path: '/raiting',
+      panel: 'raiting_panel',
+      view: 'default_view',
+    },
   ] : 
   [
     {
