@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {Tabbar, TabbarItem} from '@vkontakte/vkui';
-import { Icon28ClipOutline, Icon24GraphOutline, Icon28MessageOutline, Icon28NewsfeedOutline, Icon28ServicesOutline, Icon28UserCircleOutline, Icon28UserOutline, Icon56NewsfeedOutline } from '@vkontakte/icons';
+import { Icon28ClipOutline, Icon24QuestionOutline, Icon24GraphOutline, Icon28MessageOutline, Icon28NewsfeedOutline, Icon28ServicesOutline, Icon28UserCircleOutline, Icon28UserOutline, Icon56NewsfeedOutline } from '@vkontakte/icons';
 
 interface NavbarProps {
     isManager: boolean
@@ -45,11 +45,11 @@ const Navbar:React.FC<NavbarProps> = props => {
             </TabbarItem>
             <TabbarItem
                 onClick={onStoryChange}
-                selected={activeStory === 'clips'}
-                data-story="clips"
-                text="Клипы"
+                selected={activeStory === 'achievements'}
+                data-story="achievements"
+                text="Тайны"
             >
-                <Icon28ClipOutline />
+                <Icon24QuestionOutline />
             </TabbarItem>
             <TabbarItem
                 onClick={onStoryChange}

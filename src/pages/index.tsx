@@ -3,6 +3,7 @@ import { Epic, Root, View } from '@vkontakte/vkui';
 import { UserContext } from 'entities/user';
 import React, { lazy, useContext } from 'react'
 import { Navbar } from 'widgets/navbar';
+import Achievements from './Achievements/ui/Achievements';
 
 const Home = lazy(() => import('./Home').then((module) => ({ default: module.Home })))
 const Login = lazy(() => import('./Login').then((module) => ({ default: module.Login })))
@@ -28,6 +29,9 @@ const Routing = () => {
                 </View> */}
                 <View id='raiting' activePanel='raiting_panel'>
                     <Raiting nav='raiting_panel' />
+                </View>
+                <View id='achievements' activePanel='achievements_panel'>
+                    <Achievements nav='achievements_panel' />
                 </View>
                 <View nav="login_view" activePanel={activeLoginPanel || ''}>
                     <Login nav='login_panel' />
