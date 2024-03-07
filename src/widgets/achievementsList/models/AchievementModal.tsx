@@ -1,23 +1,34 @@
-import { ModalCard, ModalRoot } from '@vkontakte/vkui'
+import { Button, ModalCard } from '@vkontakte/vkui'
 import { Achievements } from 'entities/achievements'
-import React from 'react'
+import React, { useContext } from 'react'
+
+import styles from './AchievementModal.module.scss'
+import { UserContext } from 'entities/user'
 
 interface AchievementModalProps {
     onClose: () => void
+    onSubmit: () => void
     id: string
-    achievement?: Achievements
+    achievement: Achievements
 }
 
 const AchievementModal:React.FC<AchievementModalProps> = props => {
+    const {user} = useContext(UserContext)
     const {
         id,
         onClose,
-        achievement
+        achievement,
+        onSubmit
     } = props
 
     return (
         <ModalCard id={id} onClose={onClose}>
-            <p>{achievement?.name}</p>
+            <img src={achievement.imageLink} alt='Тайна' />
+            <p className={styles.achievementName}>{achievement.name}</p>
+            <p>{achievement.text}</p>
+            {user?.role === 'Manager' &&
+                <Button onClick={() => onSubmit()}>Назначить команде</Button>
+            }
         </ModalCard>
     )
 }

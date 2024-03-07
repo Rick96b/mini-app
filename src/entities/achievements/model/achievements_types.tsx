@@ -4,4 +4,5 @@ export type Achievements =
     text: string
     rating: number
     commandName: string | undefined
+    imageLink: string
 }

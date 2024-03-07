@@ -31,7 +31,7 @@ const UpdateRaitingModal:React.FC<UpdateRaitingModalProps> = props => {
                 name="raiting"
                 value={raiting}
                 required
-                onChange={event => {console.log(event.target.value);setRaiting(event.target.value)}}
+                onChange={event => setRaiting(event.target.value)}
               />
             </FormItem>
             <FormItem top="Заголовок" htmlFor="message">

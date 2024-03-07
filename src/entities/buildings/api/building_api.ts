@@ -1,4 +1,4 @@
-import { arrayUnion, doc, increment, updateDoc } from "firebase/firestore"
+import { arrayUnion, collection, doc, getDocs, increment, updateDoc } from "firebase/firestore"
 import { db } from "shared/firebase"
 import { Building } from "../model/buildings_types"
 

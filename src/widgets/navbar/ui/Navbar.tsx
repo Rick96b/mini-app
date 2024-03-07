@@ -1,9 +1,9 @@
 import React from 'react'
 import {Tabbar, TabbarItem} from '@vkontakte/vkui';
 
-import { Icon28ClipOutline, Icon24GraphOutline, Icon28MessageOutline, Icon28NewsfeedOutline, 
-         Icon28ServicesOutline, Icon28UserCircleOutline, Icon28UserOutline, 
-         Icon56NewsfeedOutline, Icon24Market } from '@vkontakte/icons';
+import { Icon24GraphOutline, Icon28NewsfeedOutline, 
+         Icon28ServicesOutline,
+         Icon24Market, Icon24QuestionOutline, Icon24CupOutline } from '@vkontakte/icons';
 
 interface NavbarProps {
     isManager: boolean
@@ -37,7 +37,7 @@ const Navbar:React.FC<NavbarProps> = props => {
                 data-story="events"
                 text="Конкурсы"
             >
-                <Icon28ServicesOutline />
+                <Icon24CupOutline />
             </TabbarItem>
 
             <TabbarItem
