@@ -1,7 +1,9 @@
 import React from 'react'
-
 import {Tabbar, TabbarItem} from '@vkontakte/vkui';
-import { Icon28ClipOutline, Icon24GraphOutline, Icon28MessageOutline, Icon28NewsfeedOutline, Icon28ServicesOutline, Icon28UserCircleOutline, Icon28UserOutline, Icon56NewsfeedOutline } from '@vkontakte/icons';
+
+import { Icon28ClipOutline, Icon24GraphOutline, Icon28MessageOutline, Icon28NewsfeedOutline, 
+         Icon28ServicesOutline, Icon28UserCircleOutline, Icon28UserOutline, 
+         Icon56NewsfeedOutline, Icon24Market } from '@vkontakte/icons';
 
 interface NavbarProps {
     isManager: boolean
@@ -19,6 +21,7 @@ const Navbar:React.FC<NavbarProps> = props => {
 
   return (
         <Tabbar>
+
             <TabbarItem
                 onClick={onStoryChange}
                 selected={activeStory === 'feed'}
@@ -27,6 +30,7 @@ const Navbar:React.FC<NavbarProps> = props => {
             >
                 <Icon28NewsfeedOutline />
             </TabbarItem>
+
             <TabbarItem
                 onClick={onStoryChange}
                 selected={activeStory === 'services'}
@@ -35,14 +39,16 @@ const Navbar:React.FC<NavbarProps> = props => {
             >
                 <Icon28ServicesOutline />
             </TabbarItem>
+
             <TabbarItem
                 onClick={onStoryChange}
-                selected={activeStory === 'messages'}
-                data-story="messages"
-                text="Сообщения"
-            >
-                <Icon28MessageOutline />
+                selected={activeStory === 'store'}
+                data-story="store"
+                text="Магазин"
+            >    
+                < Icon24Market />
             </TabbarItem>
+
             <TabbarItem
                 onClick={onStoryChange}
                 selected={activeStory === 'clips'}
@@ -51,6 +57,7 @@ const Navbar:React.FC<NavbarProps> = props => {
             >
                 <Icon28ClipOutline />
             </TabbarItem>
+
             <TabbarItem
                 onClick={onStoryChange}
                 selected={activeStory === 'raiting'}
@@ -59,6 +66,7 @@ const Navbar:React.FC<NavbarProps> = props => {
             >
                 <Icon24GraphOutline />
             </TabbarItem>
+
         </Tabbar>
     )
 };
