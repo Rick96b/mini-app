@@ -1,23 +1,22 @@
-import { useEffect, useState } from 'react'
-import styles from './EventsList.module.scss'
 import { ModalRoot, SplitLayout } from '@vkontakte/vkui'
-import AchievementModal from '../modals/AchievementModal'
-import AddAchievementToCommand from '../modals/AddAchievementToCommand'
-import classNames from 'classnames'
-import { Events, getAllEvents } from 'entities/events'
+import { Item, getAllItems } from 'entities/item'
+import React, { useEffect, useState } from 'react'
 
-const EventsList = () => {
-    const [events, setEvents] = useState<Events[]>([])
-    const [activeModal, setActiveModal] = useState<string | null>(null)
+import styles from './ItemsList.module.scss'
+import ItemModal from '../modal/ItemModal'
+import BuyItemModal from '../modal/BuyItemModal'
+
+const ItemsList = () => {
+    const [items, setItems] = useState<Item[]>([])
+    const [activeItem, setActiveItem] = useState<Item>(items[0])
+    const [activeModal, setActiveModal] = useState<string | null>('')
     const [modalHistory, setModalHistory] = useState<string[]>([]);
-    const [activeEvent, setActiveEvent] = useState<Events>(events[0])
-    
-    useEffect(() => {
-        getAllEvents().then(response => setEvents(response))
-    }, [])
 
-    
-    
+    useEffect(() => {
+        getAllItems().then(response => setItems(response))
+    },[])
+
+        
     const changeActiveModal = (activeModal: string | null) => {
         activeModal = activeModal || null;
         let localModalHistory = modalHistory ? [...modalHistory] : [];
@@ -40,42 +39,38 @@ const EventsList = () => {
 
     const modals = (
         <ModalRoot activeModal={activeModal}>
-            <AchievementModal 
+            <ItemModal 
                 id='achievementModal' 
                 onClose={modalBack} 
                 onSubmit={() => changeActiveModal('AddAchievementToCommandModal')}
-                achievement={activeEvent}
+                item={activeItem}
             />
-            <AddAchievementToCommand
+            <BuyItemModal
                 id='AddAchievementToCommandModal' 
                 onClose={modalBack} 
-                achievement={activeEvent}
+                item={activeItem}
             />
         </ModalRoot>
     )
 
     return (
-        <SplitLayout className={styles.achievementsContainer} modal={modals}>
-            {events.map(event => 
+        <SplitLayout className={styles.itemsContainer} modal={modals}>
+            {items.map(item => 
                 <div 
-                    className={styles.achievement} 
+                    className={styles.item} 
                     onClick={() => {
-                        setActiveEvent(event)
+                        setActiveItem(item)
                         changeActiveModal('achievementModal')
                     }}
                 >
-                    <div className={classNames(!event.commandName && styles.blur)}>
-                        <img src={event.imageLink} alt='Тайна' />
-                    </div>
-                    {
-                        event.commandName && 
-                        <p className={styles.commandName}>{event.commandName}</p>
-                    }
-                    {event.name}
+                    <img src={item.imageLink} alt='Тайна' style={{width: '100%', height: '100%'}}/>
+                    {item.name}
+                    <p className={styles.price}>{item.price}</p>
+                    <p className={styles.rating}>{item.rating}</p>
                 </div>
             )}
         </SplitLayout>
     )
 }
 
-export default EventsList
+export default ItemsList

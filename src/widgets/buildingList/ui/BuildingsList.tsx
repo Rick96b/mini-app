@@ -1,23 +1,23 @@
-import { useEffect, useState } from 'react'
-import styles from './EventsList.module.scss'
 import { ModalRoot, SplitLayout } from '@vkontakte/vkui'
-import AchievementModal from '../modals/AchievementModal'
-import AddAchievementToCommand from '../modals/AddAchievementToCommand'
-import classNames from 'classnames'
-import { Events, getAllEvents } from 'entities/events'
+import { Item, getAllItems } from 'entities/item'
+import React, { useEffect, useState } from 'react'
 
-const EventsList = () => {
-    const [events, setEvents] = useState<Events[]>([])
-    const [activeModal, setActiveModal] = useState<string | null>(null)
+import styles from './BuildingsList.module.scss'
+import { Building, getAllBuildings } from 'entities/buildings'
+import BuildingModal from '../modal/BuildingModal'
+import BuyBuildingModal from '../modal/BuyBuildingModal'
+
+const BuildingsList = () => {
+    const [buildings, setBuildings] = useState<Building[]>([])
+    const [activeBuilding, setActiveBuilding] = useState<Building>(buildings[0])
+    const [activeModal, setActiveModal] = useState<string | null>('')
     const [modalHistory, setModalHistory] = useState<string[]>([]);
-    const [activeEvent, setActiveEvent] = useState<Events>(events[0])
-    
-    useEffect(() => {
-        getAllEvents().then(response => setEvents(response))
-    }, [])
 
-    
-    
+    useEffect(() => {
+        getAllBuildings().then(response => setBuildings(response))
+    },[])
+
+        
     const changeActiveModal = (activeModal: string | null) => {
         activeModal = activeModal || null;
         let localModalHistory = modalHistory ? [...modalHistory] : [];
@@ -40,42 +40,38 @@ const EventsList = () => {
 
     const modals = (
         <ModalRoot activeModal={activeModal}>
-            <AchievementModal 
+            <BuildingModal 
                 id='achievementModal' 
                 onClose={modalBack} 
                 onSubmit={() => changeActiveModal('AddAchievementToCommandModal')}
-                achievement={activeEvent}
+                building={activeBuilding}
             />
-            <AddAchievementToCommand
+            <BuyBuildingModal
                 id='AddAchievementToCommandModal' 
                 onClose={modalBack} 
-                achievement={activeEvent}
+                building={activeBuilding}
             />
         </ModalRoot>
     )
 
     return (
-        <SplitLayout className={styles.achievementsContainer} modal={modals}>
-            {events.map(event => 
+        <SplitLayout className={styles.buildingsContainer} modal={modals}>
+            {buildings.map(building => 
                 <div 
-                    className={styles.achievement} 
+                    className={styles.building} 
                     onClick={() => {
-                        setActiveEvent(event)
+                        setActiveBuilding(building)
                         changeActiveModal('achievementModal')
                     }}
                 >
-                    <div className={classNames(!event.commandName && styles.blur)}>
-                        <img src={event.imageLink} alt='Тайна' />
-                    </div>
-                    {
-                        event.commandName && 
-                        <p className={styles.commandName}>{event.commandName}</p>
-                    }
-                    {event.name}
+                    <img src={building.imageLink} alt='Тайна' style={{width: '100%', height: '100%'}}/>
+                    {building.name}
+                    <p className={styles.price}>{building.price}</p>
+                    <p className={styles.rating}>{building.rating}</p>
                 </div>
             )}
         </SplitLayout>
     )
 }
 
-export default EventsList
+export default BuildingsList

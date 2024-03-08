@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react'
 
 import styles from './AchievementsList.module.scss'
 import { ModalRoot, SplitLayout } from '@vkontakte/vkui'
-import AchievementModal from '../models/AchievementModal'
-import AddAchievementToCommand from '../models/AddAchievementToCommand'
+import AchievementModal from '../modals/AchievementModal'
+import AddAchievementToCommand from '../modals/AddAchievementToCommand'
 import classNames from 'classnames'
 
 const AchievementsList = () => {
@@ -61,13 +61,14 @@ const AchievementsList = () => {
             {achievements.map(achievement => 
                 <div 
                     className={styles.achievement} 
-                    onClick={() => {
-                        setActiveAchievement(achievement)
+                    onClick={achievement.commandName ? () => {
+                        setActiveAchievement(achievement) 
                         changeActiveModal('achievementModal')
-                    }}
+                        
+                    } : () => {}}
                 >
                     <div className={classNames(!achievement.commandName && styles.blur)}>
-                        <img src={achievement.imageLink} alt='Тайна' />
+                        <img src={achievement.imageLink} alt='Тайна' className={styles.image}/>
                     </div>
                     {
                         achievement.commandName && 

@@ -5,6 +5,7 @@ import React, { lazy, useContext } from 'react'
 import { Navbar } from 'widgets/navbar';
 import { Store } from './Store';
 import Achievements from './Achievements/ui/Achievements';
+import { Events } from './Events';
 
 const Home = lazy(() => import('./Home').then((module) => ({ default: module.Home })))
 const Login = lazy(() => import('./Login').then((module) => ({ default: module.Login })))
@@ -18,16 +19,14 @@ const Routing = () => {
     const activeLoginPanel = useGetPanelForView('login_view')
     const [activeStory, setActiveStory] = React.useState('raiting');
     return (
-        <Epic 
+        <>
+        {
+            user ? 
+            <Epic 
             className='app-container' 
             activeStory={activeStory}
             tabbar={<Navbar isManager switchStory={setActiveStory} activeStory={activeStory}/>}
-        >
-{/*                 <View nav="default_view" activePanel={activePanelDefault || ''}>
-                    <Home nav='home_panel' />
-                    <Documents nav='documents_panel' />
-                    <Raiting nav='raiting_panel' />
-                </View> */}
+            >
                 <View id='raiting' activePanel='raiting_panel'>
                     <Raiting nav='raiting_panel' />
                 </View>
@@ -37,11 +36,24 @@ const Routing = () => {
                 <View nav="login_view" activePanel={activeLoginPanel || ''}>
                     <Login nav='login_panel' />
                 </View>
-
+                <View id='events' activePanel='events_panel'>
+                    <Events nav='events_panel' />
+                </View>
                 <View id='store' activePanel='store_panel'>
                     <Store nav='store_panel' />
                 </View>
-        </Epic>
+                <View id='documents' activePanel='documents_panel'>
+                    <Documents nav='documents_panel' />
+                </View>
+            </Epic>
+            :
+            <Root activeView='login'>
+                <View id='login' activePanel='login_panel'>
+                    <Login nav='login_panel' />
+                </View>
+            </Root>
+        }
+        </>
     )
 }
 

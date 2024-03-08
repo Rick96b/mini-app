@@ -6,7 +6,7 @@ import { WithUser } from './providers/with-user';
 import { WithRouter } from './providers/with-router';
 
 const App = () => {
-	
+
     return (
 		<>
 			<WithUser>

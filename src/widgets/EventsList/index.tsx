@@ -1,0 +1,1 @@
+export {default as EventsList} from './ui/EventsList'

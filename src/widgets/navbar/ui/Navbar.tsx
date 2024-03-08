@@ -24,9 +24,9 @@ const Navbar:React.FC<NavbarProps> = props => {
 
             <TabbarItem
                 onClick={onStoryChange}
-                selected={activeStory === 'feed'}
-                data-story="raiting"
-                text="Новости"
+                selected={activeStory === 'documents'}
+                data-story="documents"
+                text="Документы"
             >
                 <Icon28NewsfeedOutline />
             </TabbarItem>
