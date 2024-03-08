@@ -24,7 +24,7 @@ export const addToCommand = async ( event: Events, commandName: string ) =>
 export const getAllEvents = async () => 
 {
     let result: Events[] = []
-    const eventCollection = ( await getDocs(collection(db, 'events' ) ) )
+    const eventCollection = ( await getDocs( collection( db, 'events' ) ) )
     eventCollection.forEach( event => 
     {
         result.push( event.data() as Events )
