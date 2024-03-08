@@ -1,12 +1,21 @@
 import { useEffect, useState } from 'react'
 import styles from './EventsList.module.scss'
 import { ModalRoot, SplitLayout } from '@vkontakte/vkui'
-import AchievementModal from '../modals/AchievementModal'
-import AddAchievementToCommand from '../modals/AddAchievementToCommand'
 import classNames from 'classnames'
 import { Events, getAllEvents } from 'entities/events'
+import { Command } from 'entities/command'
+import EventModal from '../modals/EventModal'
+import AddEventToCommand from '../modals/AddEventToCommand'
 
-const EventsList = () => {
+interface EventsListProps {
+    commands: Command[]
+}
+
+const EventsList:React.FC<EventsListProps> = props => {
+    const {
+        commands
+    } = props
+
     const [events, setEvents] = useState<Events[]>([])
     const [activeModal, setActiveModal] = useState<string | null>(null)
     const [modalHistory, setModalHistory] = useState<string[]>([]);
@@ -40,16 +49,17 @@ const EventsList = () => {
 
     const modals = (
         <ModalRoot activeModal={activeModal}>
-            <AchievementModal 
+            <EventModal 
                 id='achievementModal' 
                 onClose={modalBack} 
                 onSubmit={() => changeActiveModal('AddAchievementToCommandModal')}
                 achievement={activeEvent}
             />
-            <AddAchievementToCommand
+            <AddEventToCommand
                 id='AddAchievementToCommandModal' 
                 onClose={modalBack} 
-                achievement={activeEvent}
+                event={activeEvent}
+                commands={commands}
             />
         </ModalRoot>
     )

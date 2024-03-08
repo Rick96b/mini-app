@@ -2,7 +2,6 @@ import React from 'react'
 import {Tabbar, TabbarItem} from '@vkontakte/vkui';
 
 import { Icon24GraphOutline, Icon28NewsfeedOutline, 
-         Icon28ServicesOutline,
          Icon24Market, Icon24QuestionOutline, Icon24CupOutline } from '@vkontakte/icons';
 
 interface NavbarProps {
@@ -29,15 +28,6 @@ const Navbar:React.FC<NavbarProps> = props => {
                 text="Документы"
             >
                 <Icon28NewsfeedOutline />
-            </TabbarItem>
-
-            <TabbarItem
-                onClick={onStoryChange}
-                selected={activeStory === 'events'}
-                data-story="events"
-                text="Конкурсы"
-            >
-                <Icon24CupOutline />
             </TabbarItem>
 
             <TabbarItem

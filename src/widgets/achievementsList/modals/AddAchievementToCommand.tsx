@@ -1,13 +1,15 @@
-import { Button, FormItem, Input, ModalCard } from '@vkontakte/vkui'
+import { Button, FormItem, Input, ModalCard, Select } from '@vkontakte/vkui'
 import { Achievements, addToCommand } from 'entities/achievements'
 import React, { useState } from 'react'
 
 import styles from './AchievementModal.module.scss'
+import { Command } from 'entities/command'
 
 interface AddAchievementToCommandProps {
     onClose: () => void
     id: string
     achievement: Achievements
+    commands: Command[]
 }
 
 
@@ -16,6 +18,7 @@ const AddAchievementToCommand:React.FC<AddAchievementToCommandProps> = props => 
         id,
         onClose,
         achievement,
+        commands
     } = props
 
     const [command, setCommand] = useState('')
@@ -26,12 +29,10 @@ const AddAchievementToCommand:React.FC<AddAchievementToCommandProps> = props => 
                 htmlFor="command"
                 top="Команда"
             >
-                <Input  
+                <Select  
                     id="command"
-                    type="text"
-                    name="command"
+                    options={commands.map(command => {return {label: command.name, value: command.name}})}
                     value={command}
-                    required
                     onChange={event => setCommand(event.target.value)}
                 />
             </FormItem>

@@ -2,28 +2,28 @@ import { Command } from 'entities/command'
 import React from 'react'
 
 import styles from './RaitingRow.module.scss'
+import { Avatar } from '@vkontakte/vkui'
 
 interface RaitingRowProps {
     command: Command
-    activeCommand: string
-    setActiveCommand: (activeCommand: string) => void
-    refetch: () => void
+    place: number
+    onClick: () => void
 }
 
 const RaitingRow: React.FC<RaitingRowProps> = props => {
     const {
         command,
-        activeCommand,
-        setActiveCommand
+        place,
+        onClick
     } = props
 
-
-
     return (
-        <div className={styles.command} key={command.name} onClick={() => setActiveCommand(
-            command.name === activeCommand ? '' : command.name
-        )}>
-            <p>{command.imageLink}</p>
+        <div className={styles.command} key={command.name} onClick={onClick}>
+            <Avatar src={command.imageLink} alt='Команда' size={88}/>
+            <div className={styles.infoContainer}>
+                <p>{command.name}</p>
+                <p>{place + 1} место</p>
+            </div>
             <p className={styles.raiting}>{command.raiting}</p>
         </div>               
     )

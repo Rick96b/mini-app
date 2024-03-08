@@ -1,5 +1,5 @@
 export const userCodes = [
-    'Письки'
+    'Команда'
 ]
 
 export const managerCodes = [

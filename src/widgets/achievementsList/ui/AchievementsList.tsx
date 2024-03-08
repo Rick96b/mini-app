@@ -7,8 +7,17 @@ import { ModalRoot, SplitLayout } from '@vkontakte/vkui'
 import AchievementModal from '../modals/AchievementModal'
 import AddAchievementToCommand from '../modals/AddAchievementToCommand'
 import classNames from 'classnames'
+import { Command } from 'entities/command'
 
-const AchievementsList = () => {
+interface AchievementsListProps {
+    commands: Command[]
+}
+
+const AchievementsList:React.FC<AchievementsListProps> = props => {
+    const {
+        commands
+    } = props
+
     const [achievements, setAchievements] = useState<Achievements[]>([])
     const [activeModal, setActiveModal] = useState<string | null>(null)
     const [modalHistory, setModalHistory] = useState<string[]>([]);
@@ -52,6 +61,7 @@ const AchievementsList = () => {
                 id='AddAchievementToCommandModal' 
                 onClose={modalBack} 
                 achievement={activeAchievement}
+                commands={commands}
             />
         </ModalRoot>
     )

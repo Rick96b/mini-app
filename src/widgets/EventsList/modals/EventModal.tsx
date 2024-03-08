@@ -2,17 +2,17 @@ import { Button, ModalCard } from '@vkontakte/vkui'
 import { Achievements } from 'entities/achievements'
 import React, { useContext } from 'react'
 
-import styles from './AchievementModal.module.scss'
+import styles from './EventModal.module.scss'
 import { UserContext } from 'entities/user'
 
-interface AchievementModalProps {
+interface EventModalProps {
     onClose: () => void
     onSubmit: () => void
     id: string
     achievement: Achievements
 }
 
-const AchievementModal:React.FC<AchievementModalProps> = props => {
+const EventModal:React.FC<EventModalProps> = props => {
     const {user} = useContext(UserContext)
     const {
         id,
@@ -33,4 +33,4 @@ const AchievementModal:React.FC<AchievementModalProps> = props => {
     )
 }
 
-export default AchievementModal
+export default EventModal
