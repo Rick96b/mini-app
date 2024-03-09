@@ -2,6 +2,7 @@ import { arrayUnion, collection, doc, getDocs, increment, updateDoc } from "fire
 import { db } from "shared/firebase"
 import { Achievements } from "../model/achievements_types"
 
+// Добавляет коммандам достижения
 export const addToCommand = async ( achievement: Achievements, commandName: string ) => 
 {
     updateDoc  
