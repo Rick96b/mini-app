@@ -15,7 +15,7 @@ export type ItemsRequest =
 
 export type BuildingsRequest = 
 {
-    buildings: boolean
+    buildings: string[]
     isApprovedByBank: boolean
     isApprovedByConstruction: boolean
     isCompleted: boolean
