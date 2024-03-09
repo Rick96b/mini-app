@@ -2,8 +2,8 @@ import { ExploreOffTwoTone } from "@mui/icons-material"
 
 export type Request =
 {
-    itemsRequest: ItemsRequest
-    buildingsRequest: BuildingsRequest
+    itemsRequest: ItemsRequest[]
+    buildingsRequest: BuildingsRequest[]
 }
 
 export type ItemsRequest =

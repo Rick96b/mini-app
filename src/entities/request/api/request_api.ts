@@ -1,4 +1,4 @@
-import { arrayUnion, collection, doc, getDocs, increment, updateDoc } from "firebase/firestore"
+import { arrayUnion, collection, getDocs, increment, updateDoc, addDoc } from "firebase/firestore"
 import { db } from "shared/firebase"
 import { BuildingsRequest, ItemsRequest, Request } from "../model/request_types"
 
@@ -34,3 +34,7 @@ export const getAllBuildingRequests = async () =>
 
 // общие методы //
 
+export const createRequest = async ( request: Request ) =>
+{
+    await addDoc( collection( db, "requests" ), request )
+}
