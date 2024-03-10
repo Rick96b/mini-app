@@ -9,7 +9,8 @@ interface ItemModalProps {
     onClose: () => void
     onSubmit: () => void
     id: string
-    item: Item
+    item: Item,
+    buttonName?: string
 }
 
 const ItemModal:React.FC<ItemModalProps> = props => {
@@ -18,7 +19,8 @@ const ItemModal:React.FC<ItemModalProps> = props => {
         id,
         onClose,
         item,
-        onSubmit
+        onSubmit,
+        buttonName
     } = props
 
     return (
@@ -28,7 +30,7 @@ const ItemModal:React.FC<ItemModalProps> = props => {
             <p>Рейтинг: {item.rating}</p>
             <p>Цена: {item.price}</p>
             {user?.role === 'Manager' &&
-                <Button onClick={() => onSubmit()}>Купить</Button>
+                <Button onClick={() => onSubmit()}>{buttonName ? buttonName : 'Добавить в корзину'}</Button>
             }
         </ModalCard>
     )

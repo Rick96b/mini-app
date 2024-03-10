@@ -44,7 +44,7 @@ const Routing = () => {
                 <View id='achievements' activePanel='achievements_panel'>
                     <Achievements nav='achievements_panel' />
                 </View>
-                <View nav="login_view" activePanel={activeLoginPanel || ''}>
+                <View nav='login_view' activePanel={activeLoginPanel || ''}>
                     <Login nav='login_panel' />
                 </View>
                 <View id='store' activePanel='store_panel'>

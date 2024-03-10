@@ -1,0 +1,1 @@
+export {default as ShoppingsList} from './ui/ShoppingsList'

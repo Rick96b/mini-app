@@ -77,7 +77,7 @@ const AchievementsList:React.FC<AchievementsListProps> = props => {
                         
                     } : () => {}}
                 >
-                    <div className={classNames(!achievement.commandName && styles.blur)}>
+                    <div className={classNames(styles.imgContainer, !achievement.commandName && styles.blur)}>
                         <img src={achievement.imageLink} alt='Тайна' className={styles.image}/>
                     </div>
                     {

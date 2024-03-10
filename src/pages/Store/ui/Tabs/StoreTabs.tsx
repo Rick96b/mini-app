@@ -36,6 +36,16 @@ const StoreTabs:React.FC<StoreTabsProps> = props => {
             >
                 Здания
             </TabsItem>
+            <TabsItem
+                selected={selected === 'cart'}
+                onClick={() => {
+                    setSelected('cart');
+                }}
+                id="tab-cart"
+                aria-controls="tab-content-cart"
+            >
+                Корзина
+            </TabsItem>
         </Tabs>
     )
 }

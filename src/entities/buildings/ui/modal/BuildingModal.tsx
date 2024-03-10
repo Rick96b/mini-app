@@ -10,6 +10,7 @@ interface BuildingModalProps {
     onSubmit: () => void
     id: string
     building: Building
+    buttonName?: string
 }
 
 const BuildingModal:React.FC<BuildingModalProps> = props => {
@@ -19,7 +20,8 @@ const BuildingModal:React.FC<BuildingModalProps> = props => {
         id,
         onClose,
         building,
-        onSubmit
+        onSubmit,
+        buttonName
     } = props
 
     return (
@@ -29,7 +31,7 @@ const BuildingModal:React.FC<BuildingModalProps> = props => {
             <p>Рейтинг: {building.rating}</p>
             <p>Цена: {building.price}</p>
             {user?.role === 'Manager' &&
-                <Button onClick={() => onSubmit()}>Купить</Button>
+                <Button onClick={() => onSubmit()}>{buttonName ? buttonName : 'Добавить в корзину'}</Button>
             }
         </ModalCard>
     )

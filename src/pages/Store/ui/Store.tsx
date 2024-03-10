@@ -5,6 +5,9 @@ import StoreTabs from './Tabs/StoreTabs'
 import styles from './Store.module.scss'
 import { ItemsList } from 'widgets/itemsList'
 import { BuildingsList } from 'widgets/buildingList'
+import { Item } from 'entities/item'
+import { Building } from 'entities/buildings'
+import { ShoppingsList } from 'widgets/ShoppingsList'
 
 interface StoreProps
 {
@@ -17,6 +20,8 @@ const Store:React.FC< StoreProps > = props =>
       nav 
     } = props
     const [selectedTab, setSelectedTab] = useState('items')
+    const [selectedItems, setSelectedItems] = useState<Item[]>([])
+    const [selectedBuildings, setSelectedBuildings] = useState<Building[]>([])
 
     return (
       <Panel nav = { nav }>
@@ -28,11 +33,36 @@ const Store:React.FC< StoreProps > = props =>
         </PanelHeader>
         {
           selectedTab === 'items' &&
-          <ItemsList />
+          <ItemsList addItem={(newItem: Item) => setSelectedItems(
+            (prevItems) => [...prevItems, newItem])
+          }/>
         }
         {
           selectedTab === 'buildings' &&
-          <BuildingsList />
+          <BuildingsList 
+            addBuilding={(newBuilding: Building) => setSelectedBuildings(
+              (prevBuildings) => [...prevBuildings, newBuilding])
+            }
+          />
+        }
+        {
+          selectedTab === 'cart' &&
+          <ShoppingsList 
+            items={selectedItems}
+            buildings={selectedBuildings}
+            deleteItem={
+              (itemToDelete) => setSelectedItems((prevItems) => {
+                return prevItems.filter(prevItem => prevItem !== itemToDelete)
+              })
+            }
+            deleteBuilding={
+              (buildingToDelete) => setSelectedItems((prevBuildings) => {
+                return prevBuildings.filter(prevBuilding => prevBuilding
+                  
+                  !== buildingToDelete)
+              })
+            }
+          />
         }
       </Panel>
     )

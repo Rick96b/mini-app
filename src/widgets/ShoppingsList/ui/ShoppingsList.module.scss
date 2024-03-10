@@ -1,0 +1,11 @@
+.list {
+    padding: 0px 20px;
+    margin: 20px 0px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+
+    font-size: 22px;
+
+    margin-bottom: 20px;
+}

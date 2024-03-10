@@ -1,28 +1,37 @@
-.achievementsContainer {
+.eventsContainer {
     padding: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
 
     font-size: 22px;
+    margin-bottom: 100px;
 }
 
-.achievement {
-    aspect-ratio: 1;
+.event {
+    text-align: center;
     border-radius: 30px;
 }
 
-.blur {
+.imgContainer {
     display: flex;
     align-items: center;
     justify-content: center;
 
     height: 100%;
     width: 100%;
+}
 
+.blur {
     filter: blur(10px);
 }
 
 .commandName {
     opacity: 0.6;
+}
+
+.img {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    max-width: 80%;
 }

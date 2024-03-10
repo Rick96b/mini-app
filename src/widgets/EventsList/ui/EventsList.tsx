@@ -50,13 +50,13 @@ const EventsList:React.FC<EventsListProps> = props => {
     const modals = (
         <ModalRoot activeModal={activeModal}>
             <EventModal 
-                id='achievementModal' 
+                id='eventModal' 
                 onClose={modalBack} 
                 onSubmit={() => changeActiveModal('AddAchievementToCommandModal')}
                 achievement={activeEvent}
             />
             <AddEventToCommand
-                id='AddAchievementToCommandModal' 
+                id='AddEventToCommandModal' 
                 onClose={modalBack} 
                 event={activeEvent}
                 commands={commands}
@@ -65,17 +65,17 @@ const EventsList:React.FC<EventsListProps> = props => {
     )
 
     return (
-        <SplitLayout className={styles.achievementsContainer} modal={modals}>
+        <SplitLayout className={styles.eventsContainer} modal={modals}>
             {events.map(event => 
                 <div 
-                    className={styles.achievement} 
+                    className={styles.event} 
                     onClick={() => {
                         setActiveEvent(event)
-                        changeActiveModal('achievementModal')
+                        changeActiveModal('eventModal')
                     }}
                 >
-                    <div className={classNames(!event.commandName && styles.blur)}>
-                        <img src={event.imageLink} alt='Тайна' />
+                    <div className={classNames(styles.imgContainer, !event.commandName && styles.blur)}>
+                        <img src={event.imageLink} alt='Конкурс' className={styles.img}/>
                     </div>
                     {
                         event.commandName && 
