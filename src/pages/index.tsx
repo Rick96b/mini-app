@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useLayoutEffect } from 'react'
+import { FC, useCallback, useContext, useEffect } from 'react'
 import {
   SplitLayout,
   SplitCol,
@@ -19,11 +19,15 @@ import { AppPanels, AppView } from 'shared/routes/routes'
 import { Rating } from './Rating'
 import { Modals } from './modals'
 import { RatingView } from './RatingView'
+import { Login } from './Login'
+import { UserContext } from 'entities/user'
+import { Achievements } from './Achievements'
 
 const APP_WIDTH = 911
 const APP_PADDING = 100
 
 export const App: FC = () => {
+  const {user} = useContext(UserContext)
   /** Возвращает активное всплывающее окно | null */
   const routerPopout = usePopout()
   /** Возвращает платформу IOS, ANDROID, VKCOM */
@@ -31,14 +35,21 @@ export const App: FC = () => {
   /** Возвращает объект с помощью которого можно совершать переходы в навигации */
   const routeNavigator = useRouteNavigator()
 
-
   /** Получаем текущую позицию */
   const {
     panelsHistory,
     view: activeView = AppView.Main,
-    panel: activePanel = AppPanels.Rating,
+    panel: activePanel = AppPanels.Rating
   } = useActiveVkuiLocation()
 
+
+  useEffect(() => {
+    if(!user) {
+      routeNavigator.push('/login')
+    } else {
+      routeNavigator.push('/')
+    }
+  }, [user])
   /** Получаем тип устройства */
   const { isDesktop } = useAdaptivityWithJSMediaQueries()
   const onSwipeBack = useCallback(() => routeNavigator.back(), [routeNavigator])
@@ -74,7 +85,7 @@ export const App: FC = () => {
       <SplitCol>
         <Epic
           activeStory={activeView}
-          tabbar={!isDesktop && <Navbar activePanel={activePanel} />}
+          tabbar={<Navbar activePanel={activePanel} />}
         >
           <View
             onSwipeBack={onSwipeBack}
@@ -84,6 +95,8 @@ export const App: FC = () => {
           >
             <Rating nav={AppPanels.Rating} />
             <RatingView nav={AppPanels.RatingView} />
+            <Login nav={AppPanels.Login} />
+            <Achievements nav={AppPanels.Achievements}/>
           </View>
         </Epic>
       </SplitCol>

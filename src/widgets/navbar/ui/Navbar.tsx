@@ -3,6 +3,8 @@ import {Tabbar, TabbarItem} from '@vkontakte/vkui';
 
 import { Icon24GraphOutline, Icon28NewsfeedOutline, 
          Icon24Market, Icon24QuestionOutline } from '@vkontakte/icons';
+import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
+import { AppPanels } from 'shared/routes/routes';
 
 interface NavbarProps {
     activePanel: string
@@ -12,13 +14,13 @@ const Navbar:React.FC<NavbarProps> = props => {
     const {
         activePanel
     } = props
-    const onStoryChange = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {};
+    const router = useRouteNavigator()
 
-  return (
+    return (
         <Tabbar>
 
             <TabbarItem
-                onClick={onStoryChange}
+                onClick={() => {}}
                 selected={activePanel === 'documents'}
                 data-story="documents"
                 text="Документы"
@@ -27,7 +29,7 @@ const Navbar:React.FC<NavbarProps> = props => {
             </TabbarItem>
 
             <TabbarItem
-                onClick={onStoryChange}
+                onClick={() => {}}
                 selected={activePanel === 'store'}
                 data-story="store"
                 text="Магазин"
@@ -36,8 +38,8 @@ const Navbar:React.FC<NavbarProps> = props => {
             </TabbarItem>
 
             <TabbarItem
-                onClick={onStoryChange}
-                selected={activePanel === 'achievements'}
+                onClick={() => router.push(AppPanels.Achievements)}
+                selected={activePanel === AppPanels.Achievements}
                 data-story="achievements"
                 text="Тайны"
             >
@@ -45,8 +47,8 @@ const Navbar:React.FC<NavbarProps> = props => {
             </TabbarItem>
 
             <TabbarItem
-                onClick={onStoryChange}
-                selected={activePanel === 'raiting'}
+                onClick={() => router.push(AppPanels.Rating)}
+                selected={activePanel === AppPanels.Rating}
                 data-story="raiting"
                 text="Рейтинг"
             >

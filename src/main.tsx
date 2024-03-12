@@ -4,7 +4,9 @@ import { AppConfig } from 'app';
 
 vkBridge.send('VKWebAppInit');
 
-createRoot(document.getElementById('root')!).render(<AppConfig />);
+createRoot(document.getElementById('root')!).render(
+  <AppConfig />
+);
 
 if (import.meta.env.MODE === 'development') {
   import('./eruda.ts');
