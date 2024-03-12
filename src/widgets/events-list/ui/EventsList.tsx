@@ -5,6 +5,7 @@ import { Events, getAllEvents } from 'entities/events'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 import { AppModals } from 'shared/routes/routes'
 import { UserContext } from 'entities/user'
+import { Avatar } from '@vkontakte/vkui'
 
 const EventsList:React.FC = () => {
     const {user} = useContext(UserContext)
@@ -21,7 +22,7 @@ const EventsList:React.FC = () => {
                 <div 
                     className={styles.achievement} 
                     onClick={
-                        () => user?.role === 'Manager' && 
+                        () => (user?.role === 'Manager' || event.commandName) && 
                         router.push(AppModals.Event, {state: {event: event}})
                     }
                 >
@@ -33,7 +34,10 @@ const EventsList:React.FC = () => {
                             )
                         }   
                     >
-                        <img src={event.imageLink} alt='Конкурс' />
+                        <Avatar src={event.imageLink} alt='Конкурс' style={{
+                            width: '300px',
+                            height: '300px'
+                        }}/>
                     </div>
                     {
                         event.commandName && 

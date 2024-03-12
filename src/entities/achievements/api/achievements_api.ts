@@ -10,7 +10,11 @@ export const addToCommand = async ( achievement: Achievements, commandName: stri
         doc(db, `commands/${commandName}`), 
         {
             achievements: arrayUnion( achievement.name ),
-            raiting: increment( achievement.rating )
+            raiting: increment( achievement.rating ),
+            raiting_history: arrayUnion({
+                raiting: achievement.rating,
+                message: achievement.name
+            })
         }
     )
     updateDoc

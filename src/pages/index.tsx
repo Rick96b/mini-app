@@ -22,6 +22,7 @@ import { RatingView } from './RatingView'
 import { Login } from './Login'
 import { UserContext } from 'entities/user'
 import { Achievements } from './Achievements'
+import { Store } from './Store'
 
 const APP_WIDTH = 911
 const APP_PADDING = 100
@@ -97,6 +98,7 @@ export const App: FC = () => {
             <RatingView nav={AppPanels.RatingView} />
             <Login nav={AppPanels.Login} />
             <Achievements nav={AppPanels.Achievements}/>
+            <Store nav={AppPanels.Store} />
           </View>
         </Epic>
       </SplitCol>

@@ -15,9 +15,10 @@ export enum AppView {
 
 export enum AppPanels {
   Rating = '/',
-  RatingView = 'RatingView',
+  RatingView = '/ratingView',
   Login = '/login',
-  Achievements = '/achievements'
+  Achievements = '/achievements',
+  Store = '/store'
 }
 
 export enum AppModals {
@@ -26,6 +27,7 @@ export enum AppModals {
   AddEvent = 'AddEvent',
   Achievement = 'Achievement',
   AddAchievement = 'AddAchievement',
+  Building = 'Building'
 }
 
 export const routes = RoutesConfig.create([
@@ -35,13 +37,16 @@ export const routes = RoutesConfig.create([
         createModal(AppModals.UpdateRating, '/UpdateRating')
       ]),
       createPanel(AppPanels.RatingView, '/RatingView'),
-      createPanel(AppPanels.Login, '/login'),
+      createPanel(AppPanels.Login, '/Login'),
       createPanel(AppPanels.Achievements, '/achievements', [
         createModal(AppModals.Event, '/achievements/Event'),
         createModal(AppModals.AddEvent, '/achievements/Event/AddEvent'),
         createModal(AppModals.Achievement, '/achievements/Achievement'),
         createModal(AppModals.AddAchievement, '/achievements/Achievement/AddAchievement'),
       ]),
+      createPanel(AppPanels.Store, '/Store', [
+        createModal(AppModals.Building, '/Store/Building'),
+      ])
     ]),
   ])
 ])

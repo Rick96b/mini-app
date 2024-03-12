@@ -17,7 +17,7 @@ const AddAchievementToCommand:React.FC<AddAchievementToCommandProps> = props => 
     } = props
 
     const [command, setCommand] = useState('')
-    const achievement = useMetaParams<{event: Achievements}>()?.event
+    const achievement = useMetaParams<{achievement: Achievements}>()?.achievement
     const [commands, setCommands] = useState<Command[]>([])
 
     useEffect(() => {

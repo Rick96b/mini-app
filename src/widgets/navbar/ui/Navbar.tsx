@@ -29,8 +29,8 @@ const Navbar:React.FC<NavbarProps> = props => {
             </TabbarItem>
 
             <TabbarItem
-                onClick={() => {}}
-                selected={activePanel === 'store'}
+                onClick={() => router.push(AppPanels.Store)}
+                selected={activePanel === AppPanels.Store}
                 data-story="store"
                 text="Магазин"
             >    

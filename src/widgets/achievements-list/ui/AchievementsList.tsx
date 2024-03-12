@@ -7,6 +7,7 @@ import classNames from 'classnames'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 import { AppModals } from 'shared/routes/routes'
 import { UserContext } from 'entities/user'
+import { Avatar } from '@vkontakte/vkui'
 
 const AchievementsList:React.FC = () => {
     const {user} = useContext(UserContext)
@@ -22,7 +23,7 @@ const AchievementsList:React.FC = () => {
             {achievements.map(achievement => 
                 <div 
                     className={styles.achievement} 
-                    onClick={() => user?.role === 'Manager' && router.push(
+                    onClick={() => (user?.role === 'Manager' || achievement.commandName) && router.push(
                         AppModals.Achievement, 
                         {state: {achievement: achievement}}
                     )}
@@ -35,7 +36,10 @@ const AchievementsList:React.FC = () => {
                             )
                         }   
                     >
-                        <img src={achievement.imageLink} alt='Тайна' className={styles.image}/>
+                        <Avatar src={achievement.imageLink} alt='Тайна' style={{
+                            width: '300px',
+                            height: '300px'
+                        }}/>
                     </div>
                     {
                         achievement.commandName && 

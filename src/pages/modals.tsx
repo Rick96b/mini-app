@@ -13,6 +13,7 @@ import EventModal from 'widgets/events-list/modals/EventModal'
 import AddEventToCommand from 'widgets/events-list/modals/AddEventToCommand'
 import AchievementModal from 'widgets/achievements-list/modals/AchievementModal'
 import AddAchievementToCommand from 'widgets/achievements-list/modals/AddAchievementToCommand'
+import BuildingModal from 'widgets/shopping-cart/modals/BuildingModal/BuldingModal'
 
 
 const Modals: React.FC = () => {
@@ -31,6 +32,7 @@ const Modals: React.FC = () => {
       <AddEventToCommand id={AppModals.AddEvent} />
       <AchievementModal id={AppModals.Achievement} />
       <AddAchievementToCommand id={AppModals.AddAchievement} />
+      <BuildingModal id={AppModals.Building} />
     </ModalRoot>
   )
 }
