@@ -27,7 +27,9 @@ export enum AppModals {
   AddEvent = 'AddEvent',
   Achievement = 'Achievement',
   AddAchievement = 'AddAchievement',
-  Building = 'Building'
+  Building = 'Building',
+  BaseItemModal = 'BaseListModal',
+  BaseItemToCommandModal = 'BaseItemToCommandModal'
 }
 
 export const routes = RoutesConfig.create([
@@ -39,10 +41,8 @@ export const routes = RoutesConfig.create([
       createPanel(AppPanels.RatingView, '/RatingView'),
       createPanel(AppPanels.Login, '/Login'),
       createPanel(AppPanels.Achievements, '/achievements', [
-        createModal(AppModals.Event, '/achievements/Event'),
-        createModal(AppModals.AddEvent, '/achievements/Event/AddEvent'),
-        createModal(AppModals.Achievement, '/achievements/Achievement'),
-        createModal(AppModals.AddAchievement, '/achievements/Achievement/AddAchievement'),
+        createModal(AppModals.BaseItemModal, '/achievements/BaseListModal'),
+        createModal(AppModals.BaseItemToCommandModal, '/achievements/BaseListModal/BaseItemToCommandModal')
       ]),
       createPanel(AppPanels.Store, '/Store', [
         createModal(AppModals.Building, '/Store/Building'),

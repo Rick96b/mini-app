@@ -3,7 +3,7 @@ import { db } from "shared/firebase"
 import { Achievements } from "../model/achievements_types"
 
 // Добавляет коммандам достижения
-export const addToCommand = async ( achievement: Achievements, commandName: string ) => 
+export const addAchievementToCommand = async ( achievement: Achievements, commandName: string ) => 
 {
     updateDoc  
     (

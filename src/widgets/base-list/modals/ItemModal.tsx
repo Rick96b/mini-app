@@ -1,35 +1,36 @@
 import { Button, ModalCard } from '@vkontakte/vkui'
-import { Achievements } from 'entities/achievements'
 import React, { useContext } from 'react'
 
-import styles from './AchievementModal.module.scss'
+import styles from './ItemModal.module.scss'
 import { UserContext } from 'entities/user'
 import { useMetaParams, useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 import { AppModals } from 'shared/routes/routes'
+import { BaseListItem, itemsType } from '../model/baseListLayoutModel'
 
-interface AchievementModalProps {
+interface ItemModalProps {
     id: string
 }
 
-const AchievementModal:React.FC<AchievementModalProps> = props => {
+const ItemModal:React.FC<ItemModalProps> = props => {
     const {user} = useContext(UserContext)
     const {
-        id,
+        id
     } = props
-    const achievement = useMetaParams<{achievement: Achievements}>()?.achievement
+    const params = useMetaParams<{item: BaseListItem, itemsType: itemsType}>()
+    
     const router = useRouteNavigator()
 
     return (
         <ModalCard id={id}>
-            <img src={achievement?.imageLink} alt='Тайна' />
-            <p className={styles.achievementName}>{achievement?.name}</p>
-            <p>{achievement?.text}</p>
+            <img src={params?.item?.imageLink} alt='Элемент списка' />
+            <p className={styles.itemName}>{params?.item?.name}</p>
+            <p>{params?.item?.text}</p>
             {user?.role === 'Manager' &&
                 <Button 
                     onClick={() => {
                         router.replace(
-                            AppModals.AddAchievement, 
-                            {state: {achievement: achievement}}
+                            AppModals.BaseItemToCommandModal, 
+                            {state: {item: params?.item, itemsType: params?.itemsType}}
                         )
                     }}
                 >
@@ -40,4 +41,4 @@ const AchievementModal:React.FC<AchievementModalProps> = props => {
     )
 }
 
-export default AchievementModal
+export default ItemModal

@@ -3,7 +3,7 @@ import { db } from "shared/firebase"
 import { Events } from "../model/event_types"
 
 // добавляет событие комманде
-export const addToCommand = async ( event: Events, commandName: string ) => 
+export const addEventToCommand = async ( event: Events, commandName: string ) => 
 {
     updateDoc  
     (

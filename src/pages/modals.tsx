@@ -9,11 +9,8 @@ import {
 // Modals
 import UpdateRatingModal from './Rating/modals/UpdateRatingModal/UpdateRatingModal'
 import { AppModals } from 'shared/routes/routes'
-import EventModal from 'widgets/events-list/modals/EventModal'
-import AddEventToCommand from 'widgets/events-list/modals/AddEventToCommand'
-import AchievementModal from 'widgets/achievements-list/modals/AchievementModal'
-import AddAchievementToCommand from 'widgets/achievements-list/modals/AddAchievementToCommand'
 import BuildingModal from 'widgets/shopping-cart/modals/BuildingModal/BuldingModal'
+import { BaseItemModal, BaseItemToCommandModal } from 'widgets/base-list'
 
 
 const Modals: React.FC = () => {
@@ -28,11 +25,9 @@ const Modals: React.FC = () => {
       onClose={() => routeNavigator.hideModal()}
     >
       <UpdateRatingModal id={AppModals.UpdateRating} />
-      <EventModal id={AppModals.Event}/>
-      <AddEventToCommand id={AppModals.AddEvent} />
-      <AchievementModal id={AppModals.Achievement} />
-      <AddAchievementToCommand id={AppModals.AddAchievement} />
       <BuildingModal id={AppModals.Building} />
+      <BaseItemModal id={AppModals.BaseItemModal} />
+      <BaseItemToCommandModal id={AppModals.BaseItemToCommandModal} />
     </ModalRoot>
   )
 }

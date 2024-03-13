@@ -1,24 +1,24 @@
 import { Button, FormItem, ModalCard, Select } from '@vkontakte/vkui'
-import { addToCommand } from 'entities/events'
 import React, { useEffect, useState } from 'react'
 
-import styles from './AddEventToCommand.module.scss'
+import styles from './AddItemToCommand.module.scss'
 import { Command, getAllCommands } from 'entities/command'
 import { Events } from 'entities/events'
 import { useMetaParams } from '@vkontakte/vk-mini-apps-router'
+import { BaseListItem, SubmitFunctions, itemsType } from '../model/baseListLayoutModel'
 
-interface AddEventToCommandProps {
+interface AddItemToCommandProps {
     id: string
 }
 
 
-const AddEventToCommand:React.FC<AddEventToCommandProps> = props => {
+const AddItemToCommand:React.FC<AddItemToCommandProps> = props => {
     const {
         id
     } = props
 
     const [commandName, setCommandName] = useState('')
-    const event = useMetaParams<{event: Events}>()?.event
+    const params = useMetaParams<{item: BaseListItem, itemsType: itemsType}>()
     const [commands, setCommands] = useState<Command[]>([])
 
     useEffect(() => {
@@ -37,9 +37,15 @@ const AddEventToCommand:React.FC<AddEventToCommandProps> = props => {
                     onChange={event => setCommandName(event.target.value)}
                 />
             </FormItem>
-            <Button onClick={() => addToCommand(event as Events, commandName)}>Назначить</Button>
+            <Button 
+                onClick={() => {
+                    SubmitFunctions[params?.itemsType as itemsType](params?.item as BaseListItem, commandName)
+                }}
+            >
+                Назначить
+            </Button>
         </ModalCard>
     )
 }
 
-export default AddEventToCommand
+export default AddItemToCommand
