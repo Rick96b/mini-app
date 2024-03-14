@@ -1,21 +1,22 @@
-import { ExploreOffTwoTone } from "@mui/icons-material"
+import { Building } from "entities/buildings"
+import { Item } from "entities/item"
 
 export type Request =
 {
-    itemsRequest: ItemsRequest[]
-    buildingsRequest: BuildingsRequest[]
+    itemsRequest: ItemsRequest
+    buildingsRequest: BuildingsRequest
 }
 
 export type ItemsRequest =
 {
-    items: string[]
+    items: Item[]
     isApprovedByBank: boolean
     isCompleted: boolean
 }
 
 export type BuildingsRequest = 
 {
-    buildings: string[]
+    buildings: Building[]
     isApprovedByBank: boolean
     isApprovedByConstruction: boolean
     isCompleted: boolean

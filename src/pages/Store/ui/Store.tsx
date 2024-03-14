@@ -1,13 +1,13 @@
-import { Panel, PanelHeader } from '@vkontakte/vkui'
-import React, { useState } from 'react'
+import { Button, Panel, PanelHeader } from '@vkontakte/vkui'
+import React, { useContext, useEffect, useState } from 'react'
 import StoreTabs from './Tabs/StoreTabs'
 
 import styles from './Store.module.scss'
-import { ItemsList } from 'widgets/items-list'
-import { BuildingsList } from 'widgets/building-list'
-import { Building } from 'entities/buildings'
+import { Building, getAllBuildings } from 'entities/buildings'
 import { ShoppingCart } from 'widgets/shopping-cart'
-import { Item } from 'entities/item'
+import { Item, getAllItems } from 'entities/item'
+import { BaseProductsList } from 'widgets/base-products-list'
+import { StoreContext } from 'shared/storeContext/storeContext'
 
 interface StoreProps
 {
@@ -19,24 +19,29 @@ const Store:React.FC< StoreProps > = props =>
     const { 
       nav 
     } = props
+    const rootStore = useContext(StoreContext)
     const [selectedTab, setSelectedTab] = useState('items')
-    const [activeBuildings, setActiveBuildings] = useState<Building[]>([])
-    const [activeItems, setActiveItems] = useState<Item[]>([])
+    const [buildings, setBuildings] = useState<Building[]>([])
+    const [items, setItems] = useState<Item[]>([])
 
-    const deleteBuilding = (building: Building) => setActiveBuildings((prevBuildings) => {
-      let result = prevBuildings
-      for(let i = 0; i < prevBuildings.length; i++) {
-        if(prevBuildings[i] === building) {
-          result.splice(i, 1)
-          break
-        }
-      }
-      return result
-    })
+    useEffect(() => {
+      getAllBuildings().then(response => setBuildings(response))
+      getAllItems().then(response => setItems(response))
+    }, [])
 
     return (
       <Panel nav = { nav }>
-        <PanelHeader className={styles.storeHeader}>
+        <PanelHeader className={styles.storeHeader}
+          after={
+            selectedTab === 'cart' &&
+            <Button
+              onClick={() => rootStore?.requestStore.sendRequest()}
+              style={{marginRight: '10px'}}
+            >
+              Отправить заявку
+            </Button>
+          }
+        >
           <StoreTabs
             selected={selectedTab}
             setSelected={(selected:string) => setSelectedTab(selected)}
@@ -44,26 +49,21 @@ const Store:React.FC< StoreProps > = props =>
         </PanelHeader>
         {
           selectedTab === 'items' &&
-          <ItemsList 
-            addToCart={
-              (item: Item) => setActiveItems((prevItems) => [...prevItems, item])
-            }
+          <BaseProductsList 
+            items={items}
+            itemsType='Item'
           />
         }
         {
           selectedTab === 'buildings' &&
-          <BuildingsList 
-            addToCart={
-              (building: Building) => setActiveBuildings((prevBuildins) => [...prevBuildins, building])
-            }
+          <BaseProductsList 
+            items={buildings}
+            itemsType='Building'
           />
         }
         {
           selectedTab === 'cart' &&
-          <ShoppingCart 
-            activeBuildings={activeBuildings}
-            activeItems={activeItems}
-          />
+          <ShoppingCart />
         }
       </Panel>
     )

@@ -23,13 +23,9 @@ export enum AppPanels {
 
 export enum AppModals {
   UpdateRating = 'UpdateRating',
-  Event = 'Event',
-  AddEvent = 'AddEvent',
-  Achievement = 'Achievement',
-  AddAchievement = 'AddAchievement',
-  Building = 'Building',
   BaseItemModal = 'BaseListModal',
-  BaseItemToCommandModal = 'BaseItemToCommandModal'
+  BaseItemToCommandModal = 'BaseItemToCommandModal',
+  BaseProductItemModal = 'BaseProductItemModal'
 }
 
 export const routes = RoutesConfig.create([
@@ -45,7 +41,7 @@ export const routes = RoutesConfig.create([
         createModal(AppModals.BaseItemToCommandModal, '/achievements/BaseListModal/BaseItemToCommandModal')
       ]),
       createPanel(AppPanels.Store, '/Store', [
-        createModal(AppModals.Building, '/Store/Building'),
+        createModal(AppModals.BaseProductItemModal, '/Store/BaseProductItemModal'),
       ])
     ]),
   ])

@@ -1,5 +1,5 @@
 import React from "react";
-import { UserContextType, UserInfo } from "../model/userTypes";
+import { UserContextType } from "../model/userTypes";
 
 
 export const UserContext = React.createContext<UserContextType>({
