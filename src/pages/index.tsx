@@ -23,6 +23,8 @@ import { Login } from './Login'
 import { UserContext } from 'entities/user'
 import { Achievements } from './Achievements'
 import { Store } from './Store'
+import { Documents } from './Documents'
+
 
 const APP_WIDTH = 911
 const APP_PADDING = 100
@@ -99,6 +101,7 @@ export const App: FC = () => {
             <Login nav={AppPanels.Login} />
             <Achievements nav={AppPanels.Achievements}/>
             <Store nav={AppPanels.Store} />
+            <Documents nav={AppPanels.Documents} />
           </View>
         </Epic>
       </SplitCol>

@@ -11,6 +11,7 @@ import UpdateRatingModal from './Rating/modals/UpdateRatingModal/UpdateRatingMod
 import { AppModals } from 'shared/routes/routes'
 import { BaseItemModal, BaseItemToCommandModal } from 'widgets/base-list'
 import { ProductItemModal } from 'widgets/base-products-list'
+import { QrModal } from './Documents'
 
 
 const Modals: React.FC = () => {
@@ -28,6 +29,7 @@ const Modals: React.FC = () => {
       <BaseItemModal id={AppModals.BaseItemModal} />
       <BaseItemToCommandModal id={AppModals.BaseItemToCommandModal} />
       <ProductItemModal id={AppModals.BaseProductItemModal} />
+      <QrModal id={AppModals.QrModal} />
     </ModalRoot>
   )
 }

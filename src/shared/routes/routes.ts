@@ -18,14 +18,16 @@ export enum AppPanels {
   RatingView = '/ratingView',
   Login = '/login',
   Achievements = '/achievements',
-  Store = '/store'
+  Store = '/store',
+  Documents = '/documents',
 }
 
 export enum AppModals {
   UpdateRating = 'UpdateRating',
   BaseItemModal = 'BaseListModal',
   BaseItemToCommandModal = 'BaseItemToCommandModal',
-  BaseProductItemModal = 'BaseProductItemModal'
+  BaseProductItemModal = 'BaseProductItemModal',
+  QrModal = 'QrModal'
 }
 
 export const routes = RoutesConfig.create([
@@ -42,6 +44,9 @@ export const routes = RoutesConfig.create([
       ]),
       createPanel(AppPanels.Store, '/Store', [
         createModal(AppModals.BaseProductItemModal, '/Store/BaseProductItemModal'),
+      ]),
+      createPanel(AppPanels.Documents, '/Documents', [
+        createModal(AppModals.QrModal, '/Documents/QrModal')
       ])
     ]),
   ])

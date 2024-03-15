@@ -20,8 +20,8 @@ const Navbar:React.FC<NavbarProps> = props => {
         <Tabbar>
 
             <TabbarItem
-                onClick={() => {}}
-                selected={activePanel === 'documents'}
+                onClick={() => router.push(AppPanels.Documents)}
+                selected={activePanel === AppPanels.Documents}
                 data-story="documents"
                 text="Документы"
             >

@@ -7,6 +7,7 @@ export type UserInfo = {
     birthDate?: DatePickerDateFormat;
     role?: 'User' | 'Manager'
     group?: string
+    isDocumentsApproved?: boolean
 }
 
 export type UserContextType = {

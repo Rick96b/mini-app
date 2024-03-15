@@ -28,7 +28,7 @@ export const AppConfig = () => {
       setLoading(true)
       const userId = (await bridge.send('VKWebAppGetLaunchParams')).vk_user_id
       const userData = await getUserById(userId.toString())
-      setUser(userData ? userData : null)
+      setUser(userData ? {...userData, id:userId} : null)
       setLoading(false)
     }
     fetchData();

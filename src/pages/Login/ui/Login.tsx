@@ -24,7 +24,14 @@ const Login:React.FC<LoginProps> = props => {
   }
 
   const handleUserDataChange = (name:string, studyPlace: string, birthDate: DatePickerDateFormat) => {
-    const userToAdd = {...userData, name: name, studyPlace: studyPlace, birthDate:birthDate}
+    const userToAdd = {
+      ...userData, 
+      name: name, 
+      studyPlace: studyPlace, 
+      birthDate:birthDate,
+      isDocumentsApproved: false
+
+    }
     addUserToDb(userToAdd)
     setUser && setUser(userToAdd)
     router.push('/')
