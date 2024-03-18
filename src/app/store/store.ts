@@ -7,6 +7,8 @@ import { createRequest } from "entities/request";
 export class RequestStore {
     rootStore
     request:Request = {
+        id: '',
+        commandName: '',
         itemsRequest: {
             items: [],
             isApprovedByBank: false,
@@ -38,7 +40,7 @@ export class RequestStore {
         this.request.itemsRequest!.isApprovedByBank = true
     }
 
-    sendRequest() {
-        createRequest(this.request)
+    sendRequest(commandName: string) {
+        createRequest({...this.request, commandName})
     }
 }

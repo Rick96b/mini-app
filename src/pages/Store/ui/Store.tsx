@@ -8,6 +8,7 @@ import { ShoppingCart } from 'widgets/shopping-cart'
 import { Item, getAllItems } from 'entities/item'
 import { BaseProductsList } from 'widgets/base-products-list'
 import { StoreContext } from 'shared/storeContext/storeContext'
+import { UserContext } from 'entities/user'
 
 interface StoreProps
 {
@@ -19,6 +20,7 @@ const Store:React.FC< StoreProps > = props =>
     const { 
       nav 
     } = props
+    const {user} = useContext(UserContext)
     const rootStore = useContext(StoreContext)
     const [selectedTab, setSelectedTab] = useState('items')
     const [buildings, setBuildings] = useState<Building[]>([])
@@ -35,7 +37,7 @@ const Store:React.FC< StoreProps > = props =>
           after={
             selectedTab === 'cart' &&
             <Button
-              onClick={() => rootStore?.requestStore.sendRequest()}
+              onClick={() => rootStore?.requestStore.sendRequest(user?.group || '')}
               style={{marginRight: '10px'}}
             >
               Отправить заявку

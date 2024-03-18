@@ -1,43 +1,22 @@
-import { collection, getDocs, addDoc } from "firebase/firestore"
+import { collection, getDocs, addDoc, updateDoc, doc } from "firebase/firestore"
 import { db } from "shared/firebase"
-import { BuildingsRequest, ItemsRequest, Request } from "../model/request_types"
+import { Request } from "../model/request_types"
 
-// методы для предметов //
-
-// возвращает все запросы предметов
-export const getAllItemRequests = async () => 
+export const getAllRequests = async () => 
 {
-
-    let result: ItemsRequest[] = []
-    const itemsRequestCollection = ( await getDocs(collection(db, 'items_request' ) ) )
-    itemsRequestCollection.forEach( itemsRequest => 
+    let result: Request[] = []
+    const requestsCollection = ( await getDocs(collection(db, 'requests' ) ) )
+    requestsCollection.forEach( request => 
     {
-        result.push( itemsRequest.data() as ItemsRequest )
+        result.push( request.data() as Request )
     });
     return result
-
 }
 
-// методы для строений //
-
-// возвращает все запросы строений
-export const getAllBuildingRequests = async () => 
-{
-
-    let result: BuildingsRequest[] = []
-    const buildingsRequestCollection = ( await getDocs(collection(db, 'buildings_request' ) ) )
-    buildingsRequestCollection.forEach( buildingsRequest => 
-    {
-        result.push( buildingsRequest.data() as BuildingsRequest )
-    });
-    return result
-
-}
-
-// общие методы //
-
-// создаёт запрос
 export const createRequest = async ( request: Request ) =>
 {
-    await addDoc( collection( db, "requests" ), request )
+    addDoc( collection( db, "requests" ), request )
+    .then(response => updateDoc(doc(db, `requests/${response.id}`), {
+        id: response.id
+    }))
 }

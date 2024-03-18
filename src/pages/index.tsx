@@ -24,6 +24,8 @@ import { UserContext } from 'entities/user'
 import { Achievements } from './Achievements'
 import { Store } from './Store'
 import { Documents } from './Documents'
+import { News } from './News'
+import { Bank } from './Bank'
 
 
 const APP_WIDTH = 911
@@ -102,6 +104,8 @@ export const App: FC = () => {
             <Achievements nav={AppPanels.Achievements}/>
             <Store nav={AppPanels.Store} />
             <Documents nav={AppPanels.Documents} />
+            <News nav={AppPanels.News} />
+            <Bank nav={AppPanels.Bank} />
           </View>
         </Epic>
       </SplitCol>

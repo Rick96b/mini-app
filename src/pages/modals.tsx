@@ -12,6 +12,7 @@ import { AppModals } from 'shared/routes/routes'
 import { BaseItemModal, BaseItemToCommandModal } from 'widgets/base-list'
 import { ProductItemModal } from 'widgets/base-products-list'
 import { QrModal } from './Documents'
+import { ReviewRequestModal } from 'widgets/requests-list'
 
 
 const Modals: React.FC = () => {
@@ -30,6 +31,7 @@ const Modals: React.FC = () => {
       <BaseItemToCommandModal id={AppModals.BaseItemToCommandModal} />
       <ProductItemModal id={AppModals.BaseProductItemModal} />
       <QrModal id={AppModals.QrModal} />
+      <ReviewRequestModal id={AppModals.RequestModal} />
     </ModalRoot>
   )
 }

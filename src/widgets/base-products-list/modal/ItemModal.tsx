@@ -2,7 +2,6 @@ import { Button, ModalCard } from '@vkontakte/vkui'
 import React, { useContext } from 'react'
 
 import styles from './ItemModal.module.scss'
-import { UserContext } from 'entities/user'
 import { useMetaParams } from '@vkontakte/vk-mini-apps-router'
 import { BaseItem, itemsType } from '../model/types'
 import { StoreContext } from 'shared/storeContext/storeContext'
@@ -12,7 +11,6 @@ interface ItemModalProps {
 }
 
 const ItemModal:React.FC<ItemModalProps> = props => {
-    const {user} = useContext(UserContext)
     const rootStore = useContext(StoreContext)
     const {
         id
@@ -25,27 +23,25 @@ const ItemModal:React.FC<ItemModalProps> = props => {
             <p className={styles.buildingName}>{params?.item?.name}</p>
             <p>Рейтинг: {params?.item?.rating}</p>
             <p>Цена: {params?.item?.price}</p>
-            {user?.role === 'Manager' &&
-                <Button 
-                    onClick={() => {
-                        if(params?.itemsType === 'Item') {
-                            if(params?.isDelete) {
-                                rootStore?.requestStore.deleteItemFromRequest(params?.item)
-                            } else {
-                                rootStore?.requestStore.addItemToRequest(params?.item)
-                            }
+            <Button 
+                onClick={() => {
+                    if(params?.itemsType === 'Item') {
+                        if(params?.isDelete) {
+                            rootStore?.requestStore.deleteItemFromRequest(params?.item)
                         } else {
-                            if(params?.isDelete) {
-                                rootStore?.requestStore.deleteItemFromRequest(params?.item)
-                            } else {
-                                rootStore?.requestStore.addItemToRequest(params?.item!)
-                            }
+                            rootStore?.requestStore.addItemToRequest(params?.item)
                         }
-                    }}
-                >
-                    Купить
-                </Button>
-            }
+                    } else {
+                        if(params?.isDelete) {
+                            rootStore?.requestStore.deleteItemFromRequest(params?.item)
+                        } else {
+                            rootStore?.requestStore.addItemToRequest(params?.item!)
+                        }
+                    }
+                }}
+            >
+                Купить
+            </Button>
         </ModalCard>
     )
 }
