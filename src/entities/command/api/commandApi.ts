@@ -36,7 +36,6 @@ export const addUserToCommand = async (userId:string, commandId: string) => {
     })
 }
 
-// Олег называй методы по нормальному
 export const getAllCommandsSubscribe = (setNewCommands: (commands: Command[]) => void) => 
                                         onSnapshot(collection(db, "commands"), (commands) => {
     let result: Command[] = []

@@ -13,6 +13,7 @@ import { BaseItemModal, BaseItemToCommandModal } from 'widgets/base-list'
 import { ProductItemModal } from 'widgets/base-products-list'
 import { QrModal } from './Documents'
 import { ReviewRequestModal } from 'widgets/requests-list'
+import { DeleteNewsModal, NewsModal } from './News'
 
 
 const Modals: React.FC = () => {
@@ -32,6 +33,8 @@ const Modals: React.FC = () => {
       <ProductItemModal id={AppModals.BaseProductItemModal} />
       <QrModal id={AppModals.QrModal} />
       <ReviewRequestModal id={AppModals.RequestModal} />
+      <NewsModal id={AppModals.NewsModal} />
+      <DeleteNewsModal id={AppModals.DeleteNewsModal} />
     </ModalRoot>
   )
 }

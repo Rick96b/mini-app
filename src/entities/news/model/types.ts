@@ -1,5 +1,6 @@
 export type News = {
+    id: string
     title: string
     text: string
-    date: Date
+    imageLink: string
 }

@@ -32,7 +32,9 @@ export enum AppModals {
   BaseItemToCommandModal = 'BaseItemToCommandModal',
   BaseProductItemModal = 'BaseProductItemModal',
   QrModal = 'QrModal',
-  RequestModal = 'RequestModal'
+  RequestModal = 'RequestModal',
+  NewsModal = 'NewsModal',
+  DeleteNewsModal = 'DeleteNewsModal',
 }
 
 export const routes = RoutesConfig.create([
@@ -53,7 +55,10 @@ export const routes = RoutesConfig.create([
       createPanel(AppPanels.Documents, '/Documents', [
         createModal(AppModals.QrModal, '/Documents/QrModal')
       ]),
-      createPanel(AppPanels.News, '/News'),
+      createPanel(AppPanels.News, '/News', [
+        createModal(AppModals.NewsModal, '/News/NewsModal'),
+        createModal(AppModals.DeleteNewsModal, '/News/DeleteNewsModal')
+      ]),
       createPanel(AppPanels.Bank, '/Bank', [
         createModal(AppModals.RequestModal, '/Bank/RequestModal')
       ]),
