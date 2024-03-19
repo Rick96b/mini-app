@@ -3,7 +3,8 @@ import {Tabbar, TabbarItem} from '@vkontakte/vkui';
 
 import { Icon24GraphOutline, Icon24Newsfeed, 
          Icon24Market, Icon24QuestionOutline, 
-         Icon24ArticleBoxOutline, Icon24Coins } from '@vkontakte/icons';
+         Icon24ArticleBoxOutline, Icon24Coins, Icon24CubeBoxOutline,
+         Icon24PaintRollerOutline } from '@vkontakte/icons';
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 import { AppPanels } from 'shared/routes/routes';
 import { UserContext } from 'entities/user';
@@ -41,6 +42,26 @@ const Navbar:React.FC<NavbarProps> = props => {
                     <Icon24Coins />
                 </TabbarItem>
             }
+
+            
+                <TabbarItem
+                    onClick={() => router.push(AppPanels.Stock)}
+                    selected={activePanel === AppPanels.Stock}
+                    data-story="Stock"
+                    text="Склад"
+                >
+                    <Icon24CubeBoxOutline />
+                </TabbarItem>
+
+                <TabbarItem
+                    onClick={() => router.push(AppPanels.Construction)}
+                    selected={activePanel === AppPanels.Construction}
+                    data-story="Construction"
+                    text="Стройка"
+                >
+                    <Icon24PaintRollerOutline />
+                </TabbarItem>
+            
 
             <TabbarItem
                 onClick={() => router.push(AppPanels.Documents)}

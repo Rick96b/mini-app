@@ -3,21 +3,21 @@ import { Request } from "entities/request/model/request_types";
 import { RootStore } from "./rootStore";
 import { Item } from "entities/item";
 import { createRequest } from "entities/request";
+import { Building } from "entities/buildings";
 
 export class RequestStore {
     rootStore
     request:Request = {
         id: '',
         commandName: '',
+        isApprovedByBank: false,
         itemsRequest: {
             items: [],
-            isApprovedByBank: false,
             isCompleted: false
         },
         buildingsRequest:
         {
             buildings: [],
-            isApprovedByBank: false,
             isApprovedByConstruction: false,
             isCompleted: false
         }
@@ -31,13 +31,17 @@ export class RequestStore {
     addItemToRequest(newItem: Item) {
         this.request.itemsRequest?.items.push(newItem)
     }
+    
+    addBuildingToRequest(newBuilding: Building) {
+        this.request.buildingsRequest?.buildings.push(newBuilding)
+    }
 
     deleteItemFromRequest(itemToDelete: Item) {
         
     }
 
-    approveItemsRequestByBank() {
-        this.request.itemsRequest!.isApprovedByBank = true
+    deleteBuildingFromRequest(buildingToDelete: Item) {
+        
     }
 
     sendRequest(commandName: string) {

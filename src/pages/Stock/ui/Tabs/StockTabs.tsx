@@ -1,14 +1,14 @@
-import { Tabs, TabsItem } from '@vkontakte/vkui';
+import { Tabs, TabsItem } from '@vkontakte/vkui'
 import React from 'react'
 
-import styles from './BankTabs.module.scss'
+import styles from './StockTabs.module.scss'
 
-interface BankTabsProps {
+interface StockTabsProps {
     selected: string
     setSelected: (selected:'active' | 'archive') => void
 }
 
-const BankTabs:React.FC<BankTabsProps> = props => {
+const StockTabs:React.FC<StockTabsProps> = props => {
     const {
         selected,
         setSelected
@@ -21,8 +21,8 @@ const BankTabs:React.FC<BankTabsProps> = props => {
                 onClick={() => {
                     setSelected('active');
                 }}
-                id="tab-active-requests"
-                aria-controls="tab-content-active-requests"
+                id="tab-stock-requests"
+                aria-controls="tab-content-stock-requests"
             >
                 Активные
             </TabsItem>
@@ -31,13 +31,13 @@ const BankTabs:React.FC<BankTabsProps> = props => {
                 onClick={() => {
                     setSelected('archive');
                 }}
-                id="tab-requests-archive"
-                aria-controls="tab-content-requests-archive"
+                id="tab-stock-requests-archive"
+                aria-controls="tab-stock-content-requests-archive"
             >
-                Оплаченные
+                Выданные
             </TabsItem>
         </Tabs>
     )
 }
 
-export default BankTabs
+export default StockTabs

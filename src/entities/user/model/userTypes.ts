@@ -5,7 +5,7 @@ export type UserInfo = {
     name?: string;
     studyPlace?: string;
     birthDate?: DatePickerDateFormat;
-    role?: 'User' | 'Manager' | 'Bank'
+    role?: 'User' | 'Manager' | 'Bank' | 'Stock'
     group?: string
     isDocumentsApproved?: boolean
 }

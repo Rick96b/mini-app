@@ -1,5 +1,5 @@
 import { useMetaParams } from '@vkontakte/vk-mini-apps-router'
-import { ModalCard, ModalPage } from '@vkontakte/vkui'
+import { ModalPage } from '@vkontakte/vkui'
 import { Request } from 'entities/request'
 import React from 'react'
 

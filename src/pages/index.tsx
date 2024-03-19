@@ -26,6 +26,8 @@ import { Store } from './Store'
 import { Documents } from './Documents'
 import { News } from './News'
 import { Bank } from './Bank'
+import { Stock } from './Stock'
+import { Construction } from './Construction'
 
 
 const APP_WIDTH = 911
@@ -106,6 +108,8 @@ export const App: FC = () => {
             <Documents nav={AppPanels.Documents} />
             <News nav={AppPanels.News} />
             <Bank nav={AppPanels.Bank} />
+            <Stock nav={AppPanels.Stock} />
+            <Construction nav={AppPanels.Construction} />
           </View>
         </Epic>
       </SplitCol>

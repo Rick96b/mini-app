@@ -7,7 +7,7 @@ import { AppModals } from 'shared/routes/routes'
 
 interface RequestionsListProps {
     requests: Request[]
-    buttons: React.ReactNode[]
+    buttons: (request: Request) => React.ReactNode[]
 }
 
 const RequestionsList:React.FC<RequestionsListProps> = props => {
@@ -33,7 +33,7 @@ const RequestionsList:React.FC<RequestionsListProps> = props => {
                             <span>{getRequestPrice(request)}</span>
                         </div>
                         <div className={styles.requestButtons}>
-                            {buttons.map(button => button)}
+                            {buttons(request).map(button => button)}
                         </div>
                     </li>
                 )

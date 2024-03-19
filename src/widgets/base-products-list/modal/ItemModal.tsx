@@ -33,9 +33,9 @@ const ItemModal:React.FC<ItemModalProps> = props => {
                         }
                     } else {
                         if(params?.isDelete) {
-                            rootStore?.requestStore.deleteItemFromRequest(params?.item)
+                            rootStore?.requestStore.deleteBuildingFromRequest(params?.item)
                         } else {
-                            rootStore?.requestStore.addItemToRequest(params?.item!)
+                            rootStore?.requestStore.addBuildingToRequest(params?.item!)
                         }
                     }
                 }}
