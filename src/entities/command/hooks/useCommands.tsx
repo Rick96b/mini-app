@@ -5,7 +5,7 @@ const useCommands = () => {
     const [commands, setCommands] = useState<Command[]>([])
 
     useEffect(() => {
-        getAllCommandsSubscribe((commands => setCommands(commands)))
+        getAllCommandsSubscribe(commands => setCommands(commands))
     })
 
     return {commands}

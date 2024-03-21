@@ -1,6 +1,6 @@
 export type Command = {
     name: string;
-    members: string[];
+    members: number[];
     imageLink: string;
     raiting: number;
     raiting_history: {

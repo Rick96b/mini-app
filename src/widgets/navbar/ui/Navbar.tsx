@@ -4,7 +4,7 @@ import {Tabbar, TabbarItem} from '@vkontakte/vkui';
 import { Icon24GraphOutline, Icon24Newsfeed, 
          Icon24Market, Icon24QuestionOutline, 
          Icon24ArticleBoxOutline, Icon24Coins, Icon24CubeBoxOutline,
-         Icon24PaintRollerOutline } from '@vkontakte/icons';
+         Icon24PaintRollerOutline, Icon24Users } from '@vkontakte/icons';
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 import { AppPanels } from 'shared/routes/routes';
 import { UserContext } from 'entities/user';
@@ -88,6 +88,15 @@ const Navbar:React.FC<NavbarProps> = props => {
                 text="Тайны"
             >
                 <Icon24QuestionOutline />
+            </TabbarItem>
+
+            <TabbarItem
+                onClick={() => router.push(AppPanels.Residents)}
+                selected={activePanel === AppPanels.Residents}
+                data-story="Residents"
+                text="Жители"
+            >
+                <Icon24Users />
             </TabbarItem>
 
             <TabbarItem

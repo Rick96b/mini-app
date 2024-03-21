@@ -1,6 +1,7 @@
 import { arrayUnion, collection, doc, getDoc, getDocs, onSnapshot, updateDoc } from "firebase/firestore"
 import { db } from "shared/firebase"
 import { Command } from "../model/commandTypes"
+import bridge from "@vkontakte/vk-bridge"
 
 
 // получает все коммакды
@@ -30,7 +31,8 @@ export const updateRaiting = async (command: Command, raiting: number, message: 
 }
 
 // добавляет пользователя в комманду
-export const addUserToCommand = async (userId:string, commandId: string) => {
+export const addUserToCommand = async (commandId: string) => {
+    const userId = (await bridge.send('VKWebAppGetLaunchParams')).vk_user_id
     updateDoc(doc(db, `commands/${commandId}`), {
         members: arrayUnion(userId)
     })

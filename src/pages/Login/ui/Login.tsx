@@ -1,11 +1,12 @@
 import { DatePickerDateFormat, Panel } from '@vkontakte/vkui'
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import styles from './Login.module.scss'
 import { LoginForm } from 'widgets/login-form'
 import { UserContext, UserInfo, addUserToDb } from 'entities/user'
 import DefaultLogin from './DefaultLogin'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
+import { addUserToCommand } from 'entities/command'
 
 interface LoginProps {
   nav: string
@@ -33,6 +34,7 @@ const Login:React.FC<LoginProps> = props => {
 
     }
     addUserToDb(userToAdd)
+    addUserToCommand(userToAdd.group || '')
     setUser && setUser(userToAdd)
     router.push('/')
   }

@@ -28,7 +28,7 @@ export const AddNews = async (title: string, text: string, img: File | null) => 
             title: title,
             text: text,
             imageLink: ''
-        })
+        }).then(ref => updateDoc(ref, {id: ref.id}))
     }
 }
 
