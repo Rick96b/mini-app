@@ -4,6 +4,7 @@ import styles from './BaseProductsList.module.scss'
 import { BaseItem, itemsType } from '../model/types'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 import { AppModals } from 'shared/routes/routes'
+import { observer } from 'mobx-react-lite'
 
 interface ItemsListProps {
     items: BaseItem[]
@@ -26,7 +27,7 @@ const ItemsList:React.FC<ItemsListProps> = props => {
                     className={styles.item} 
                     onClick={() => 
                         router.push(AppModals.BaseProductItemModal,
-                        {state: {item: item, itemsType: itemsType, isDelete: isDelete}}
+                        {state: {item: {...item}, itemsType: itemsType, isDelete: isDelete}}
                     )}
                 >
                     <img src={item.imageLink} alt='Тайна' style={{width: '100%', height: '100%'}}/>
@@ -39,4 +40,4 @@ const ItemsList:React.FC<ItemsListProps> = props => {
     )
 }
 
-export default ItemsList
+export default observer(ItemsList)

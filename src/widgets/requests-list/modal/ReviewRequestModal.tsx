@@ -34,11 +34,11 @@ const ReviewRequestModal:React.FC<ReviewRequestModalProps> = props => {
         :
         <></>
       }
-      {request?.buildingsRequest.buildings.length 
+      {request?.buildingsRequest.buildings 
         ?  
         <div className={styles.container}>
+          <b>Здания</b>
           <ul className={styles.buildingList}>
-            <b>Здания</b>
             {request.buildingsRequest.buildings.map(building => 
               <li className={styles.building}>
                 <img src={building.imageLink} alt='Предмет' />

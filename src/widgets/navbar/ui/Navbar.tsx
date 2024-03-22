@@ -32,7 +32,7 @@ const Navbar:React.FC<NavbarProps> = props => {
             </TabbarItem>
 
             {
-                user?.role === 'Bank' &&
+                user?.role === 'Manager' &&
                 <TabbarItem
                     onClick={() => router.push(AppPanels.Bank)}
                     selected={activePanel === AppPanels.Bank}

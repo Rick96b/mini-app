@@ -14,16 +14,18 @@ const ShoppingCart:React.FC = () => {
 
     return (
         <div className={styles.cart}>
-            <Group header={<h2>Здания</h2>} className={styles.buildings}>
+            <Group header={<h2>Предметы</h2>} className={styles.buildings}>
                 <BaseProductsList
                     items={rootStore?.requestStore.request.itemsRequest?.items || []}
                     itemsType='Item'
+                    isDelete={true}
                 />
             </Group>
-            <Group header={<h2>Предметы</h2>} className={styles.buildings}>
+            <Group header={<h2>Здания</h2>} className={styles.buildings}>
                 <BaseProductsList
                     items={rootStore?.requestStore.request.buildingsRequest?.buildings || []}
                     itemsType='Building'
+                    isDelete={true}
                 />
             </Group>
         </div>

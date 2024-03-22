@@ -37,6 +37,7 @@ const Raiting:React.FC<RatingProps> = props => {
         >Рейтинг</PanelHeader>
         <div className={styles.commandsContainer}>
           {commands.sort((a, b) => b.raiting - a.raiting).map((command, index) => 
+            command.name !== 'Администраторы' &&
             <RaitingRow 
               command={command} 
               place={index}

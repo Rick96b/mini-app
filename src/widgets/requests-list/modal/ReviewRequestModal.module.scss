@@ -9,7 +9,8 @@
 .buildingList {
     margin-top: 10px;
 
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
 }
 

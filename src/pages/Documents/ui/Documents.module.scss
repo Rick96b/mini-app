@@ -2,60 +2,22 @@
     padding: 20px;
 }
 
-.header {
-    color: #fff;
-    background-color: rgb(0, 119, 255) !important;
-
-    div {
-        background-color: inherit !important;
-        
-        border: none !important;
-    }
-
-    border: none !important;
-
-    &:after {
-        display: none;
-    }
-}
-
 .document {
     padding: 10px 15px;
 
     font-family: var(--main-font);
     font-size: 16px;
     font-weight: 500;
-    color: #fff;
-    border-radius: 5px;
-    background-color: rgb(0, 119, 255);
+    border-radius: 12px !important;
 }
 
-.checkAllButton {
-    position: absolute;
-    right: 30px;
-    bottom: 60px;
-    aspect-ratio: 1;
+.handlers {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+
+    box-sizing: content-box;
 
     svg {
-        width: 75px !important;
-        height: 75px !important; 
-    }
-}
-
-.openScanner {
-    position: absolute;
-    left: 30px;
-    bottom: 60px;
-    aspect-ratio: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    svg {
-        width: 75px !important;
-        height: 75px !important; 
+        box-sizing: content-box;
     }
 }

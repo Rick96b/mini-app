@@ -1,4 +1,4 @@
-import { Button, Panel, PanelHeader } from '@vkontakte/vkui'
+import { Button, FixedLayout, Panel, PanelHeader } from '@vkontakte/vkui'
 import React, { useContext, useEffect, useState } from 'react'
 import StoreTabs from './Tabs/StoreTabs'
 
@@ -33,17 +33,7 @@ const Store:React.FC< StoreProps > = props =>
 
     return (
       <Panel nav = { nav }>
-        <PanelHeader className={styles.storeHeader}
-          after={
-            selectedTab === 'cart' &&
-            <Button
-              onClick={() => rootStore?.requestStore.sendRequest(user?.group || '')}
-              style={{marginRight: '10px'}}
-            >
-              Отправить заявку
-            </Button>
-          }
-        >
+        <PanelHeader className={styles.storeHeader}>
           <StoreTabs
             selected={selectedTab}
             setSelected={(selected:string) => setSelectedTab(selected)}
@@ -67,6 +57,17 @@ const Store:React.FC< StoreProps > = props =>
           selectedTab === 'cart' &&
           <ShoppingCart />
         }
+        <FixedLayout vertical='bottom' className={styles.handlers}>
+          <Button
+            onClick={() => {
+              rootStore?.requestStore.sendRequest(user?.group || '')
+              rootStore?.requestStore.cleanStore()
+            }}
+            className={styles.sendRequest}
+          >
+            Отправить заявку
+          </Button>
+        </FixedLayout>
       </Panel>
     )
 }

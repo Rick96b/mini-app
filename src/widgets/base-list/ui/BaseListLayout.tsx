@@ -42,10 +42,8 @@ const BaseListLayout:React.FC<BaseListLayoutProps> = props => {
                             )
                         }   
                     >
-                        <Avatar src={item.imageLink} alt='Конкурс' style={{
-                            width: '300px',
-                            height: '300px'
-                        }}/>
+                        <Avatar src={item.imageLink} alt='Конкурс'
+                        style={{width: '100%', height: '100%'}}/>
                     </div>
                     {
                         item.commandName && 

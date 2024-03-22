@@ -2,7 +2,7 @@ import { Button, ModalCard } from '@vkontakte/vkui'
 import React, { useContext } from 'react'
 
 import styles from './ItemModal.module.scss'
-import { useMetaParams } from '@vkontakte/vk-mini-apps-router'
+import { useMetaParams, useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 import { BaseItem, itemsType } from '../model/types'
 import { StoreContext } from 'shared/storeContext/storeContext'
 
@@ -12,6 +12,7 @@ interface ItemModalProps {
 
 const ItemModal:React.FC<ItemModalProps> = props => {
     const rootStore = useContext(StoreContext)
+    const router = useRouteNavigator()
     const {
         id
     } = props
@@ -38,9 +39,10 @@ const ItemModal:React.FC<ItemModalProps> = props => {
                             rootStore?.requestStore.addBuildingToRequest(params?.item!)
                         }
                     }
+                    router.hideModal()
                 }}
             >
-                Купить
+                {params?.isDelete ? 'Убрать' : 'Купить'}
             </Button>
         </ModalCard>
     )
