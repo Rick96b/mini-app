@@ -1,1 +1,0 @@
-export {default as BuildingsList} from './ui/BuildingsList'

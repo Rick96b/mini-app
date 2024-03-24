@@ -1,1 +1,0 @@
-export {default as RaitingView} from './ui/RaitingView'
