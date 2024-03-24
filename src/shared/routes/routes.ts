@@ -19,12 +19,13 @@ export enum AppPanels {
   Login = '/login',
   Achievements = '/achievements',
   Store = '/store',
+  ShoppingCart = '/shoppingCart',
   Documents = '/documents',
   News = '/news',
   Bank = '/bank',
   Stock = '/stock',
   Construction = '/construction',
-  Residents = '/residents'
+  Residents = '/residents',
 }
 
 export enum AppModals {
@@ -52,6 +53,9 @@ export const routes = RoutesConfig.create([
       ]),
       createPanel(AppPanels.Store, '/Store', [
         createModal(AppModals.BaseProductItemModal, '/Store/BaseProductItemModal'),
+      ]),
+      createPanel(AppPanels.ShoppingCart, '/ShoppingCart', [
+        createModal(AppModals.BaseProductItemModal, '/ShoppingCart/BaseProductItemModal'),
       ]),
       createPanel(AppPanels.Documents, '/Documents', [
         createModal(AppModals.QrModal, '/Documents/QrModal')

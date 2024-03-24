@@ -22,7 +22,10 @@ const ItemModal:React.FC<ItemModalProps> = props => {
         <ModalCard id={id}>
             <img src={params?.item?.imageLink} alt='Здание' />
             <p className={styles.buildingName}>{params?.item?.name}</p>
-            <p>Рейтинг: {params?.item?.rating}</p>
+            {
+                params?.itemsType === 'Building' &&
+                <p>Рейтинг: {params?.item?.rating}</p>
+            }
             <p>Цена: {params?.item?.price}</p>
             <Button 
                 onClick={() => {

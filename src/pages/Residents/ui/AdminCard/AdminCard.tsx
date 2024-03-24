@@ -1,10 +1,10 @@
 import { Avatar, Button, Link, Select } from '@vkontakte/vkui'
+import { UserContext, UserInfo, changeUserRole } from 'entities/user'
 import React, { useContext, useState } from 'react'
-import styles from './ResidentCard.module.scss'
-import { UserContext, UserInfo, changeUserGroup, changeUserRole } from 'entities/user'
-import { changeUserCommand, getAllCommandsNames } from 'entities/command'
 
-interface ResidentCardProps {
+import styles from './AdminCard.module.scss'
+
+interface AdminCardProps {
     resident: UserInfo
     command: {
         commandName: string,
@@ -12,20 +12,20 @@ interface ResidentCardProps {
     }
 }
 
+const optionsForAdmins = ['Manager', 'Bank', 'Stock'].map(role => {
+    return {
+        label: role,
+        value: role
+    }
+})
 
-const optionsForUsers = (await getAllCommandsNames())
-.map(commandName => {return {
-    label: commandName,
-    value: commandName
-}})
 
-
-const ResidentCard:React.FC<ResidentCardProps> = props => {
+const AdminCard:React.FC<AdminCardProps> = props => {
     const {
         resident
     } = props
     const {user} = useContext(UserContext)
-    const [command, setCommand] = useState(resident.group)
+    const [role, setRole] = useState(resident.role)
 
     return (
         <Link 
@@ -38,24 +38,22 @@ const ResidentCard:React.FC<ResidentCardProps> = props => {
             </div>
             {
                 user?.role === 'Manager' &&
-                <div 
-                    className={styles.roleHandlers} 
+                <div className={styles.roleHandlers} 
                     onClick={(event) => {
                         event.stopPropagation()
                         event.preventDefault()
                     }}
                 >
                     <Select
-                        value={command}
-                        onChange={(event) => {
-                            setCommand(event.target.value)
-                        }}
-                        options={optionsForUsers}
+                        value={role}
+                        onChange={(event) => 
+                            setRole(event.target.value as "Manager" | "Bank" | "Stock" | "User" | undefined)
+                        }
+                        options={optionsForAdmins}
                     />
                     <Button 
                         onClick={() => {
-                            changeUserGroup(resident.id!, command!)
-                            changeUserCommand(resident.id!, resident.group!, command!)
+                            changeUserRole(resident.id!, role!)
                         }}
                     >
                         Изменить роль
@@ -66,4 +64,4 @@ const ResidentCard:React.FC<ResidentCardProps> = props => {
     )
 }
 
-export default ResidentCard
+export default AdminCard

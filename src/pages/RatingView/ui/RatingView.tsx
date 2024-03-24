@@ -15,7 +15,7 @@ const RaitingView:React.FC<RaitingViewProps> = props => {
     const {
         nav
     } = props
-    const route = useRouteNavigator()
+    const router = useRouteNavigator()
     const commandName = useMetaParams<{name: string}>()?.name
     const [command, setCommand] = useState<Command>()
 
@@ -32,7 +32,7 @@ const RaitingView:React.FC<RaitingViewProps> = props => {
             <PanelHeader
                 before={
                     <Icon24ArrowLeftOutline 
-                        onClick={() => route.back()}
+                        onClick={() => router.back()}
                         style={{cursor: 'pointer'}}
                     />
                 }

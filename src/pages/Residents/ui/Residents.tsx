@@ -5,6 +5,7 @@ import useUsers from 'entities/user/hooks/useUsers'
 import React, { useMemo } from 'react'
 import styles from './Residents.module.scss'
 import ResidentCard from './ResidentCard/ResidentCard'
+import AdminCard from './AdminCard/AdminCard'
 
 interface ResidentsProps {
     nav: string
@@ -37,6 +38,9 @@ const Residents:React.FC<ResidentsProps> = props => {
                     <Accordion.Summary>{command.commandName}</Accordion.Summary>
                     <Accordion.Content>
                         {command.users.map(resident => 
+                            command.commandName === 'Администраторы' ?
+                            <AdminCard command={command} resident={resident} />
+                            :
                             <ResidentCard command={command} resident={resident} />
                         )}
                     </Accordion.Content>

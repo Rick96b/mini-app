@@ -29,6 +29,7 @@ import { Bank } from './Bank'
 import { Stock } from './Stock'
 import { Construction } from './Construction'
 import { Residents } from './Residents'
+import { ShoppingCart } from './ShoppingCart'
 
 
 const APP_WIDTH = 911
@@ -106,6 +107,7 @@ export const App: FC = () => {
             <Login nav={AppPanels.Login} />
             <Achievements nav={AppPanels.Achievements}/>
             <Store nav={AppPanels.Store} />
+            <ShoppingCart nav={AppPanels.ShoppingCart} />
             <Documents nav={AppPanels.Documents} />
             <News nav={AppPanels.News} />
             <Bank nav={AppPanels.Bank} />

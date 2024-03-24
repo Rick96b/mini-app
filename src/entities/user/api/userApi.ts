@@ -34,3 +34,9 @@ export const changeUserRole = async (userId: number, role: string) => {
         role: role
     })
 }
+
+export const changeUserGroup = async (userId: number, newCommandName: string) => {
+    updateDoc(doc(db, `users/${userId}`), {
+        group: newCommandName
+    })
+}

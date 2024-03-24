@@ -10,7 +10,11 @@ export const addToCommand = async ( building: Building, commandName: string ) =>
         doc(db, `commands/${commandName}`), 
         {
             buildings: arrayUnion( building.name ),
-            raiting: increment( building.rating )
+            raiting: increment( building.rating ),
+            raitingHistory: arrayUnion({
+                raiting: building.rating,
+                message: building.name
+            })
         }
     )
 }

@@ -1,14 +1,13 @@
 import { Button, FixedLayout, Panel, PanelHeader } from '@vkontakte/vkui'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import StoreTabs from './Tabs/StoreTabs'
 
 import styles from './Store.module.scss'
 import { Building, getAllBuildings } from 'entities/buildings'
-import { ShoppingCart } from 'widgets/shopping-cart'
 import { Item, getAllItems } from 'entities/item'
 import { BaseProductsList } from 'widgets/base-products-list'
-import { StoreContext } from 'shared/storeContext/storeContext'
-import { UserContext } from 'entities/user'
+import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
+import { AppPanels } from 'shared/routes/routes'
 
 interface StoreProps
 {
@@ -20,8 +19,7 @@ const Store:React.FC< StoreProps > = props =>
     const { 
       nav 
     } = props
-    const {user} = useContext(UserContext)
-    const rootStore = useContext(StoreContext)
+    const router = useRouteNavigator()
     const [selectedTab, setSelectedTab] = useState('items')
     const [buildings, setBuildings] = useState<Building[]>([])
     const [items, setItems] = useState<Item[]>([])
@@ -53,19 +51,12 @@ const Store:React.FC< StoreProps > = props =>
             itemsType='Building'
           />
         }
-        {
-          selectedTab === 'cart' &&
-          <ShoppingCart />
-        }
         <FixedLayout vertical='bottom' className={styles.handlers}>
           <Button
-            onClick={() => {
-              rootStore?.requestStore.sendRequest(user?.group || '')
-              rootStore?.requestStore.cleanStore()
-            }}
+            onClick={() => router.push(AppPanels.ShoppingCart)}
             className={styles.sendRequest}
           >
-            Отправить заявку
+            Корзина
           </Button>
         </FixedLayout>
       </Panel>
