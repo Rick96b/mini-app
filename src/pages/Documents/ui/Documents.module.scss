@@ -1,0 +1,23 @@
+.documentsContainer {
+    padding: 20px;
+}
+
+.document {
+    padding: 10px 15px;
+
+    font-family: var(--main-font);
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 12px !important;
+}
+
+.handlers {
+    display: flex;
+    justify-content: space-between;
+
+    box-sizing: content-box;
+
+    svg {
+        box-sizing: content-box;
+    }
+}

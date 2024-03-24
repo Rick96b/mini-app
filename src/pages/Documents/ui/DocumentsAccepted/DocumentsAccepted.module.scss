@@ -1,0 +1,13 @@
+.accepted {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.acceptedInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}

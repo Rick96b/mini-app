@@ -1,0 +1,24 @@
+.resident {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+
+    color: inherit;
+}
+
+.residentInfo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.roleHandlers {
+    display: flex;
+    gap: 20px;
+    
+    & > div{
+        width: auto !important;
+        min-width: 130px;
+    }
+}

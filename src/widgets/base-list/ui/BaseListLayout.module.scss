@@ -1,0 +1,32 @@
+.baseContainer {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+
+    font-size: 22px;
+    text-align: center;
+}
+
+.item {
+    aspect-ratio: 1;
+    border-radius: 30px;
+}
+
+.imageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    width: 100%;
+}
+
+.blur {
+    filter: blur(10px);
+}
+
+.commandName {
+    margin-top: 10px;
+    opacity: 0.6;
+}
